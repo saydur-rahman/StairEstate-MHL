@@ -1,0 +1,14 @@
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\obj\Debug\StairEstate.Data.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\obj\Debug\StairEstate.Data.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\obj\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Data\obj\Debug\StairEstate.Data.pdb

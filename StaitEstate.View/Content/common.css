@@ -1,0 +1,148 @@
+﻿.fullrows{
+    width:100%;
+    float:left;
+}
+.mytable{
+
+}
+#loadingDiv {
+    position:fixed;
+    top:20%;
+    left:45%;
+}#loadingbar {
+    margin-top: auto;
+    margin-bottom: auto;
+    bottom: 0;
+    top: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: none;
+}
+.disablepage
+{
+    opacity: .5;
+    pointer-events: none;
+}
+.head{
+    width:100%;
+    float:left;
+    background-color:#3c8dbc;
+    min-height:20px;
+    padding:5px;
+}
+.mainbody{
+    width:100%;
+    float:left;
+}
+.footer{
+    width:100%;
+    position:absolute;
+    bottom:0;
+    background-color:aqua;
+}
+.parentDiv{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    /*height:100%;*/
+}
+.onefullrow{
+    width:100%;
+}
+.fullrowsempty{
+    width:100%;
+    float:left;
+    background-color:#E8C4C4;
+    height:5px;
+}
+.entryContainer{
+    padding:10px;
+}
+.entryContainer table tr td{
+    padding:5px;
+}
+.entryContainer table{
+    border:dashed 1px;
+}
+b{
+    padding:5px;
+}
+#leftColumnFinished{
+    height:100%;
+    width:30%;
+    border:solid 1px;
+    float:left;
+}
+#rightColumnFinished{
+    height:100%;
+    width:70%;
+    border:solid 1px;
+    float:left;
+}
+.cross img{
+    width:34px;
+}
+#ulRawMats{
+    list-style-type:decimal;
+}
+#rightColumnFinished .fullrows{
+    padding:10px;
+}
+.panel-Layout {
+    vertical-align: middle;
+}
+
+
+a.button-pos {
+    color: #fff;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.edit:hover {
+    background: #4cc54c;
+}
+
+.edit {
+    background: #189418;
+}
+
+.delete:hover {
+    background: #f12e2e;
+}
+
+.delete {
+    background: #d22d2d;
+}
+
+.parentDiv .head #sales_history_table td {
+    width: 100%;
+    float: left;
+    padding: 10px 15px;
+}
+
+.datepicker-days .table-condensed tr td:hover {
+    background-color: #3c8dbc;
+    cursor: pointer;
+}
+
+
+table.table-with-pagination tr:last-child {
+}
+
+    table.table-with-pagination tr:last-child td {
+        padding: 10px;
+        border: 1px solid #dcdcdc;
+        font-weight: bold;
+    }
+
+        table.table-with-pagination tr:last-child td span {
+            cursor: pointer;
+            display: block;
+        }
