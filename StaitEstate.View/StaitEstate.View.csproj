@@ -6753,6 +6753,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular\angular1.6.7.js" />
     <Content Include="Scripts\animate-css\animate.css" />
     <Content Include="Scripts\animate-css\animate.min.css" />
     <Content Include="Scripts\autosize\autosize.js" />

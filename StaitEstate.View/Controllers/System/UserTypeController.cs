@@ -17,7 +17,7 @@ namespace StaitEstate.View.Controllers.System
      * Route has to configured
      * System/Usertype
      */
-    [RoutePrefix("Dashboard/System/UserTypes")]
+    [RoutePrefix("System/UserTypes")]
     public class UserTypeController : Controller
     {
 
@@ -31,15 +31,28 @@ namespace StaitEstate.View.Controllers.System
             _userTypeService = userTypeService;
             _userService = userService;
         }
-
+        [Route("GetAllTypes")]
+        public JsonResult GetAllTypes()
+        {
+            return (Json(new { a = "sas" },JsonRequestBehavior.AllowGet));
+            //try
+            //{
+            //    var a = Json(_userTypeService.GetAll(),JsonRequestBehavior.AllowGet);
+            //    return a;
+            //}
+            //catch(Exception ex)
+            //{
+            //    return (Json(new { a="sas" }));
+            //}
+        }
         // GET: sys_user_type
         [Route("Index")]
         public ActionResult Index()
         {
-            if (!_userService.AuthorizedUser("system/usertypes/index"))
-            {
-                return Content(unAuthorized);
-            }
+            //if (!_userService.AuthorizedUser("system/usertypes/index"))
+            //{
+            //    return Content(unAuthorized);
+            //}
             return View(_userTypeService.GetAll());
         }
 

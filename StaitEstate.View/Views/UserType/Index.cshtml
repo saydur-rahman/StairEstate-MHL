@@ -58,7 +58,7 @@
 
 
 
-<div class="parentDiv panel">
+<div class="parentDiv panel" ng-controller="UsrTypeCtr">
     <div class="head form-inline panel-heading">
         <div class="form-group m-b-10">
             <label>Country</label>
@@ -144,9 +144,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="a in types">
                     <td>
-                        Test Data
+                        {{a.a}}
                     </td>
                     <td>
                         Test Data
@@ -169,6 +169,7 @@
     </div>
     <div class="footer"></div>
 </div>
+
 @*<p>
         @Html.ActionLink("Create New", "Create", "UserType", new { @class = "btn btn-success" })
     </p>
@@ -203,4 +204,57 @@
         }
 
     </table>*@
+
+<script>
+
+    app.controller('UsrTypeCtr', ['$scope', '$ngBootbox', 'TypeService', UsrTypeCtr]);
+    app.factory('TypeService', ['$http', function ($http) {
+
+        return {
+            //saveRoom: function (room) {
+            //    return $http({
+            //        url: '/Room/CreateRoom',
+            //        method: 'POST',
+            //        data: room
+            //    })
+            //},
+            //getRoom: function (id) {
+            //    return $http.get('/Room/GetRoom/' + id);
+            //},
+            //getAllRoom: function () {
+            //    return $http.get('/Room/GetRoomList');
+            //},
+
+            //getAllStore: function () {
+            //    return $http.get('/Store/GetStoreList');
+            //},
+
+
+            //deleteRoom: function (room) {
+            //    return $http({
+            //        url: '/Room/DeleteRoom',
+            //        method: 'POST',
+            //        data: room
+            //    })
+            //}
+            getAllType: function () {
+                return $http.get('/System/UserTypes/GetAllTypes');
+            },
+        };
+    }]);
+    function UsrTypeCtr($scope, $ngBootbox, TypeService) {
+        //TypeService.getAllType().success(function (data) {
+        //    $scope.types = data;
+        //})
+        //    .error(function (xhr) {
+        //        $ngBootbox.alert('Failed');
+        //    });
+        TypeService.getAllType()
+            .then(function (data) {
+                $scope.types = data;
+            });
+        //For showing alert
+        //$ngBootbox.alert('asass');
+    }
+</script>
 
