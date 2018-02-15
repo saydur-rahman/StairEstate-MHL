@@ -206,7 +206,7 @@
     </table>*@
 
 <script>
-
+    var app = angular.module('app', ['ngBootbox']);
     app.controller('UsrTypeCtr', ['$scope', '$ngBootbox', 'TypeService', UsrTypeCtr]);
     app.factory('TypeService', ['$http', function ($http) {
 
