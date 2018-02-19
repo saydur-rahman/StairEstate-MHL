@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 
-<html ng-app="app">
+<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>StairEstate</title>
@@ -88,12 +88,10 @@
 
     @Styles.Render("~/Content/InnerLayout")
     @Scripts.Render("~/bundles/InnerLayout")
-    <script>
-        var app = angular.module('app', ['ngBootbox']);
-    </script>
+
 </head>
-<body>
-    <div> 
+<body class="parentDiv panel mainbody panel-body">
+    <div style="display: table-cell;">
         @RenderBody()
     </div>
 </body>

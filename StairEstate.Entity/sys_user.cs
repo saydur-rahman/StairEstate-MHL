@@ -39,12 +39,8 @@ namespace StairEstate.Entity
         [StringLength(100)]
         public string full_name { get; set; }
 
-
-        [ForeignKey("sys_user_type")]
         public int? usr_type_id { get; set; }
 
-
-        [ForeignKey("sys_branch")]
         public int? branch_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

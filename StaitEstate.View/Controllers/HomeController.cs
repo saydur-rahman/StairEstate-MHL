@@ -71,41 +71,41 @@ namespace StaitEstate.View.Controllers
                 aUser.user_phone = bUser.user_phone;
                 aUser.usr_type_id = bUser.usr_type_id;
 
-                
-                    var urlpath = string.Empty;
 
-                    //if (aUser.RoleId != null)
-                    //{
-                    //    if (aUser.Role.RoleSubModuleItems.Count() != 0)
-                    //    {
+                var urlpath = string.Empty;
 
-                    //    }
-                    //    else
-                    //    {
-                    //        aUser.Role.RoleSubModuleItems = null;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    aUser.Role = null;
-                    //}
+                //if (aUser.RoleId != null)
+                //{
+                //    if (aUser.Role.RoleSubModuleItems.Count() != 0)
+                //    {
 
-                    UserSession.SetUserFromSession(aUser);
-                    //UserSession.SetTimeZoneOffset(timeZoneOffset);
-                    UserSession.SetUserFullNameInSession(aUser.full_name);
+                //    }
+                //    else
+                //    {
+                //        aUser.Role.RoleSubModuleItems = null;
+                //    }
+                //}
+                //else
+                //{
+                //    aUser.Role = null;
+                //}
 
-                    return Json(new
-                    {
-                        isSuccess = true,
-                        Id = aUser.user_id,
-                        username = aUser.user_name,
-                        fullname = aUser.full_name,
-                        usertype = aUser.usr_type_id,
-                        userbranch = aUser.branch_id,
-                        //url = urlpath,
-                        chk = chk
-                    }, JsonRequestBehavior.AllowGet);
-                
+                UserSession.SetUserFromSession(aUser);
+                //UserSession.SetTimeZoneOffset(timeZoneOffset);
+                UserSession.SetUserFullNameInSession(aUser.full_name);
+
+                return Json(new
+                {
+                    isSuccess = true,
+                    Id = aUser.user_id,
+                    username = aUser.user_name,
+                    fullname = aUser.full_name,
+                    usertype = aUser.usr_type_id,
+                    userbranch = aUser.branch_id,
+                    //url = urlpath,
+                    chk = chk
+                }, JsonRequestBehavior.AllowGet);
+
 
             }
 

@@ -53,8 +53,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="company.cs" />
+    <Compile Include="hr_employee.cs" />
+    <Compile Include="hr_employee_type.cs" />
+    <Compile Include="hr_profession.cs" />
     <Compile Include="lisence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sales_collector.cs" />
+    <Compile Include="sales_customer.cs" />
+    <Compile Include="sales_nominee.cs" />
+    <Compile Include="sales_nominee_type.cs" />
+    <Compile Include="sales_profession.cs" />
     <Compile Include="survey_agenda.cs" />
     <Compile Include="survey_answer.cs" />
     <Compile Include="survey_html.cs" />
@@ -73,6 +81,7 @@
     <Compile Include="sys_user_menu_access.cs" />
     <Compile Include="sys_user_restriction.cs" />
     <Compile Include="sys_user_type.cs" />
+    <Compile Include="View Model\UserTypeVM.cs" />
     <Compile Include="View Model\userVm.cs" />
   </ItemGroup>
   <ItemGroup>

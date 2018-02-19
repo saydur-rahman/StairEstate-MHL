@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace StairEstate.Entity
 {
     using System;
@@ -21,11 +19,9 @@ namespace StairEstate.Entity
         public int usr_type_Id { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Typename")]
         public string type_name { get; set; }
 
         [StringLength(50)]
-        [DisplayName("Description")]
         public string description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

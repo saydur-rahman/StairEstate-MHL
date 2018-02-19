@@ -1,0 +1,91 @@
+﻿@model StairEstate.Entity.sys_user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>sys_user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sys_branch.branch_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sys_branch.branch_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sys_user_type.type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sys_user_type.type_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_creation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_creation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.full_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.user_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

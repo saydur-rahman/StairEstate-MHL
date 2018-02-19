@@ -10,7 +10,7 @@ namespace StairEstate.Service.Generics
 {
     public class Service<TEntity> : IService<TEntity> where TEntity: class
     {
-        public readonly IRepository<TEntity> _repository;
+        public IRepository<TEntity> _repository;
 
         public Service(IRepository<TEntity> repository)
         {

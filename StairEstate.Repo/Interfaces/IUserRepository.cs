@@ -13,5 +13,7 @@ namespace StairEstate.Repo.Interfaces
         sys_user LoginSysUser(sys_user user);
 
         bool CheckAuthorize(string url);
+
+        IEnumerable<sys_user> GetAllWithBranchAndType();
     }
 }
