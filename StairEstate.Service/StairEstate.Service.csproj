@@ -56,10 +56,12 @@
     <Compile Include="IEmployeeService.cs" />
     <Compile Include="IEmployeeTypeService.cs" />
     <Compile Include="IMenuService.cs" />
+    <Compile Include="IProfessionService.cs" />
     <Compile Include="IUserMenuAccessService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="IUserTypeService.cs" />
     <Compile Include="MenuService.cs" />
+    <Compile Include="ProfessionService.cs" />
     <Compile Include="UserMenuAccessService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="UserSession.cs" />

@@ -45,7 +45,7 @@ namespace StaitEstate.View.Controllers.Sales
         }
 
         // GET: Collectors/Create
-        public ActionResult Create()
+        public ActionResult Create(int branchId)
         {
             ViewBag.collector_sales_person_id = new SelectList(db.hr_employee, "emp_id", "emp_code");
             ViewBag.collector_profession_id = new SelectList(db.hr_profession, "profession_id", "profession_name");

@@ -12,6 +12,7 @@ namespace StairEstate.Entity
         public hr_profession()
         {
             sales_collector = new HashSet<sales_collector>();
+            sales_customer = new HashSet<sales_customer>();
         }
 
         [Key]
@@ -26,5 +27,8 @@ namespace StairEstate.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sales_collector> sales_collector { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<sales_customer> sales_customer { get; set; }
     }
 }

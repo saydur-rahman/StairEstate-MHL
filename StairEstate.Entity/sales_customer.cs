@@ -59,9 +59,9 @@ namespace StairEstate.Entity
 
         public virtual hr_employee hr_employee { get; set; }
 
-        public virtual sales_collector sales_collector { get; set; }
+        public virtual hr_profession hr_profession { get; set; }
 
-        public virtual sales_profession sales_profession { get; set; }
+        public virtual sales_collector sales_collector { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sales_nominee> sales_nominee { get; set; }

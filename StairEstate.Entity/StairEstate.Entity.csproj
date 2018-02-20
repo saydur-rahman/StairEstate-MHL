@@ -63,7 +63,6 @@
     <Compile Include="sales_customer.cs" />
     <Compile Include="sales_nominee.cs" />
     <Compile Include="sales_nominee_type.cs" />
-    <Compile Include="sales_profession.cs" />
     <Compile Include="survey_agenda.cs" />
     <Compile Include="survey_answer.cs" />
     <Compile Include="survey_html.cs" />

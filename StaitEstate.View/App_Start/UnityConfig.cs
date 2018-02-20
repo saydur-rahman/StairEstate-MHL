@@ -100,6 +100,12 @@ namespace StaitEstate.View
             //For Collector
             container.RegisterType<ICollectorService, CollectorService>();
             container.RegisterType<IRepository<sales_collector>, Repository<sales_collector>>();
+
+
+
+            //For Profession
+            container.RegisterType<IProfessionService, ProfessionService>();
+            container.RegisterType<IRepository<hr_profession>, Repository<hr_profession>>();
         }
     }
 }

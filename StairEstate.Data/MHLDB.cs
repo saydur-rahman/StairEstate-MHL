@@ -23,7 +23,6 @@ namespace StairEstate.Data
         public virtual DbSet<sales_customer> sales_customer { get; set; }
         public virtual DbSet<sales_nominee> sales_nominee { get; set; }
         public virtual DbSet<sales_nominee_type> sales_nominee_type { get; set; }
-        public virtual DbSet<sales_profession> sales_profession { get; set; }
         public virtual DbSet<survey_agenda> survey_agenda { get; set; }
         public virtual DbSet<survey_answer> survey_answer { get; set; }
         public virtual DbSet<survey_html> survey_html { get; set; }
@@ -131,6 +130,11 @@ namespace StairEstate.Data
                 .HasMany(e => e.sales_collector)
                 .WithOptional(e => e.hr_profession)
                 .HasForeignKey(e => e.collector_profession_id);
+
+            modelBuilder.Entity<hr_profession>()
+                .HasMany(e => e.sales_customer)
+                .WithOptional(e => e.hr_profession)
+                .HasForeignKey(e => e.customer_profession_id);
 
             modelBuilder.Entity<lisence>()
                 .Property(e => e.code)
@@ -250,16 +254,7 @@ namespace StairEstate.Data
                 .HasMany(e => e.sales_nominee)
                 .WithOptional(e => e.sales_nominee_type)
                 .HasForeignKey(e => e.nominee_position_id);
-
-            modelBuilder.Entity<sales_profession>()
-                .Property(e => e.profession_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sales_profession>()
-                .HasMany(e => e.sales_customer)
-                .WithOptional(e => e.sales_profession)
-                .HasForeignKey(e => e.customer_profession_id);
-
+        
             modelBuilder.Entity<survey_agenda>()
                 .HasMany(e => e.survey_master)
                 .WithOptional(e => e.survey_agenda)
