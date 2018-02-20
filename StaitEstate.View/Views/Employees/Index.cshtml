@@ -155,7 +155,6 @@
 
         $scope.changeList = function () {
             $scope.emps = null;
-            console.log($scope.selectedBranch);
             EmpService.getEmps($scope.selectedBranch).
                 then(function (res) {
                     $scope.emps = res.data;

@@ -166,11 +166,11 @@ namespace StairEstate.Data
 
             modelBuilder.Entity<sales_collector>()
                 .Property(e => e.collector_birth_place)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<sales_collector>()
                 .Property(e => e.collector_name)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<sales_collector>()
                 .Property(e => e.collector_image)
@@ -296,6 +296,11 @@ namespace StairEstate.Data
                 .HasMany(e => e.hr_employee)
                 .WithOptional(e => e.sys_branch)
                 .HasForeignKey(e => e.emp_branch_id);
+
+            modelBuilder.Entity<sys_branch>()
+                .HasMany(e => e.sales_collector)
+                .WithOptional(e => e.sys_branch)
+                .HasForeignKey(e => e.collector_branch_id);
 
             modelBuilder.Entity<sys_branch>()
                 .HasMany(e => e.survey_master)

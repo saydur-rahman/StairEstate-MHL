@@ -41,10 +41,12 @@ namespace StairEstate.Entity
         [StringLength(50)]
         public string collector_birth_place { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string collector_name { get; set; }
 
         public int? collector_profession_id { get; set; }
+
+        public int? collector_branch_id { get; set; }
 
         public int? collector_sales_person_id { get; set; }
 
@@ -56,6 +58,8 @@ namespace StairEstate.Entity
         public virtual hr_employee hr_employee { get; set; }
 
         public virtual hr_profession hr_profession { get; set; }
+
+        public virtual sys_branch sys_branch { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sales_customer> sales_customer { get; set; }

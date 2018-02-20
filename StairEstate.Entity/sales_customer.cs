@@ -50,6 +50,8 @@ namespace StairEstate.Entity
 
         public int? customer_profession_id { get; set; }
 
+        public int? customer_branch_id { get; set; }
+
         [StringLength(200)]
         public string customer_image { get; set; }
 

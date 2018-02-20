@@ -95,6 +95,11 @@ namespace StaitEstate.View
             //For EmployeeType 
             container.RegisterType<IEmployeeTypeService, EmployeeTypeService>();
             container.RegisterType<IRepository<hr_employee_type>, Repository<hr_employee_type>>();
+
+
+            //For Collector
+            container.RegisterType<ICollectorService, CollectorService>();
+            container.RegisterType<IRepository<sales_collector>, Repository<sales_collector>>();
         }
     }
 }

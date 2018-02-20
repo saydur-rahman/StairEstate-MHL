@@ -12,6 +12,7 @@ namespace StairEstate.Entity
         public sys_branch()
         {
             hr_employee = new HashSet<hr_employee>();
+            sales_collector = new HashSet<sales_collector>();
             survey_master = new HashSet<survey_master>();
             sys_user = new HashSet<sys_user>();
         }
@@ -35,6 +36,9 @@ namespace StairEstate.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<hr_employee> hr_employee { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<sales_collector> sales_collector { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<survey_master> survey_master { get; set; }

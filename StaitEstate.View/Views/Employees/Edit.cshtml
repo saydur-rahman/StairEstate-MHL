@@ -84,9 +84,8 @@
 
             <div class="form-group">
                 <label class="control-label col-md-2">Date of Birth</label>
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.emp_dob, new { htmlAttributes = new { @class = "form-control date" } })
-                    @Html.ValidationMessageFor(model => model.emp_dob, "", new { @class = "text-danger" })
+                <div class="col-md-4 datepicker" >
+                    @Html.EditorFor(model => model.emp_dob, new { htmlAttributes = new { @class = "form-control date", @id = "datetimepicker" } })
                 </div>
             </div>
 
@@ -152,4 +151,8 @@
         }
 
     }
+
+    $(function () {
+        $('#datetimepicker').datetimepicker();
+    });
 </script>

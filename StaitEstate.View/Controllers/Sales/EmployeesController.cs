@@ -17,7 +17,6 @@ namespace StaitEstate.View.Controllers.Sales
         private readonly IEmployeeService _employeeService;
         private readonly IEmployeeTypeService _employeeTypeService;
         private readonly IBranchService _branchService;
-        private MHLDB db = new MHLDB();
 
         public EmployeesController(IEmployeeService employeeService, IEmployeeTypeService employeeTypeService, IBranchService branchService)
         {

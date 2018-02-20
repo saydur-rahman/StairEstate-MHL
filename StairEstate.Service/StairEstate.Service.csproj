@@ -44,12 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranchService.cs" />
+    <Compile Include="CollectorService.cs" />
     <Compile Include="CountryService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="EmployeeTypeService.cs" />
     <Compile Include="Generics\IService.cs" />
     <Compile Include="Generics\Service.cs" />
     <Compile Include="IBranchService.cs" />
+    <Compile Include="ICollectorService.cs" />
     <Compile Include="ICountryService.cs" />
     <Compile Include="IEmployeeService.cs" />
     <Compile Include="IEmployeeTypeService.cs" />
