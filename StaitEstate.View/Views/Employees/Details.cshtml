@@ -1,123 +1,143 @@
 ﻿@model StairEstate.Entity.hr_employee
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>hr_employee</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.hr_employee_type.emp_type_name)
-        </dt>
+<div class="parentDiv panel mainbody panel-body">
+    <div class="head form-inline panel-heading" style="color: black">
+        <h4>Detals Sales Person</h4>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.hr_employee_type.emp_type_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.sys_branch.branch_name)
-        </dt>
+    @using (Html.BeginForm("Edit", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.sys_branch.branch_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_code)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_code)
-        </dd>
+    <div class="form-horizontal">
+        <br />
+        <br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_name)
-        </dt>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.emp_id)
+        @Html.HiddenFor(model => model.emp_image)
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_phone)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2"></label>
+            <div class="col-md-4">
+                <img id="imgpreview" height="200" width="200" src="@Url.Content(Model.emp_image)" style="border-width: 1px; visibility: visible;" />
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_phone)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Emp Code</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_code, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_code, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_father_or_husband_name)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Full Name</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_father_or_husband_name)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mobile No.</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_phone, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_mother_name)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Father or Husband's Name</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_father_or_husband_name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_father_or_husband_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_mother_name)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mother's Name</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_mother_name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_mother_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_permanent_address)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Permanent Address</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_permanent_address, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_permanent_address, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_permanent_address)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Present Address</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_present_address, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_present_address, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_present_address)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Date of Birth</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_dob, new { htmlAttributes = new { @class = "form-control date", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_dob, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_present_address)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Birth Place</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.emp_birth_place, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.emp_birth_place, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_dob)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Employee Type</label>
+            <div class="col-md-4">
+                @Html.DropDownList("emp_type_id", null, htmlAttributes: new { @class = "form-control", @disabled = "" })
+                @Html.ValidationMessageFor(model => model.emp_type_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_dob)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Branch</label>
+            <div class="col-md-4">
+                @Html.DropDownList("emp_branch_id", null, htmlAttributes: new { @class = "form-control", @disabled = "" })
+                @Html.ValidationMessageFor(model => model.emp_branch_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_birth_place)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.emp_birth_place)
-        </dd>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Edit", "Edit", "Employees", null, new { @class = "btn btn-sm btn-small btn-Primary return" })
+            </div>
+        </div>
+    </div>
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.emp_image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.emp_image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.deleted)
-        </dd>
-
-    </dl>
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Employees", null, new { @class = "btn btn-sm btn-small btn-default return" })
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.emp_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+<script>
+
+</script>

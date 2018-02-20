@@ -29,7 +29,7 @@
                 <option ng-repeat="branch in branches"
                         value="{{ branch.Id }}"
                         ng-selected="{{ branch.Selected == true }}">
-                    {{ branch.Name }} - {{ branch.Id}}
+                    {{ branch.Name }}
                 </option>
 
             </select>
@@ -44,48 +44,59 @@
     <div class="mainbody panel-body" style="overflow: auto">
         <table class="table table-hover table-bordered">
             <thead>
-            <tr>
-                <th>
-                    Employee Code
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Mobile no.
-                </th>
-                <th>
-                    Email
-                </th>
-                <th>
-                    Date of Birth
-                </th>
-                <th>
-                    Employee type
-                </th>
-                <th>
-                    Branch
-                </th>
-                <th></th>
-            </tr>
+                <tr>
+                    <th>
+                        Employee Code
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Mobile no.
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Date of Birth
+                    </th>
+                    <th>
+                        Employee type
+                    </th>
+                    <th>
+                        Branch
+                    </th>
+                    <th></th>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="emp in emps">
-                <td>{{emp.Code}}</td>
-                <td>{{emp.Name}}</td>
-                <td>{{emp.Phone}}</td>
-                <td>{{emp.Email}}</td>
-                <td>{{emp.Dob}}</td>
-                <td>{{emp.EmployeeType.Name}}</td>
-                <td>{{emp.Branch.Name}}</td>
-                <td>
-                    <a class="btn btn-primary btn-small btn-sm">Edit</a>
-                    <a class="btn btn-warning btn-small btn-sm">Details</a>
-                    <a class="btn btn-danger btn-small btn-sm">Delete</a>
-                    
+                <tr ng-repeat="emp in emps">
+                    <td>{{emp.Code}}</td>
+                    <td>{{emp.Name}}</td>
+                    <td>{{emp.Phone}}</td>
+                    <td>{{emp.Email}}</td>
+                    <td>{{emp.Dob}}</td>
+                    <td>{{emp.EmployeeType.Name}}</td>
+                    <td>{{emp.Branch.Name}}</td>
+                    <td>
 
-                </td>
-            </tr>
+                        @{
+                            var urlEdit = Url.Action("Edit", "Employees", new { id = "{{ emp.Id }}" });
+                            urlEdit = HttpUtility.UrlDecode(urlEdit);
+
+                            var urlDetails = Url.Action("Details", "Employees", new { id = "{{ emp.Id }}" });
+                            urlDetails = HttpUtility.UrlDecode(urlDetails);
+                        }
+                        <a data-ng-href="@urlEdit" class="btn btn-primary btn-small btn-sm">Edit</a> |
+                        <a data-ng-href="@urlDetails" class="btn btn-warning btn-small btn-sm">Details</a>
+                        <button class="btn btn-danger btn-small btn-sm"
+                                ng-click="deleteEmp(emp)">
+                            Delete
+                        </button>
+
+
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -113,6 +124,10 @@
             },
             getEmps: function (branchId) {
                 return $http.get('/employees/getemp/' + branchId);
+            },
+
+            deleteEmp: function(id) {
+                return $http.get('/employees/deleteEmp/' + id);
             }
 
         };
@@ -147,5 +162,17 @@
                 });
         }
 
+        $scope.deleteEmp = function(emp) {
+            $ngBootbox.confirm('Delete Employee: ' +  emp.Code)
+                .then(function () {
+                    EmpService.deleteEmp(emp.Id)
+                        .then(function (res) {
+                            if(res.data === 'Done')
+                                $scope.emps.splice($scope.emps.indexOf(emp), 1);
+                            else
+                                $ngBootbox.alert("Some thing went wrong");
+                        });
+                });
+        }
     }
 </script>

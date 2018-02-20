@@ -83,3 +83,16 @@ C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Entity\obj\Debug\
 C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Entity\obj\Debug\StairEstate.Entity.csproj.CoreCompileInputs.cache
 C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Entity\obj\Debug\StairEstate.Entity.dll
 C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Entity\obj\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\TrackableEntities.Common.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\TrackableEntities.Common.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.pdb

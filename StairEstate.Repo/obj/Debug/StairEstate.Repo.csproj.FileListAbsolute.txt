@@ -134,3 +134,20 @@ C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\St
 C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
 C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
 C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb

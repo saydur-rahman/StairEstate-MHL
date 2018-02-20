@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using StairEstate.Data;
 using StairEstate.Entity;
@@ -9,17 +11,24 @@ using StairEstate.Service;
 
 namespace StaitEstate.View.Controllers.Sales
 {
+    [RoutePrefix("sales/salespersons")]
     public class EmployeesController : Controller
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IEmployeeTypeService _employeeTypeService;
+        private readonly IBranchService _branchService;
         private MHLDB db = new MHLDB();
 
-        public EmployeesController(IEmployeeService employeeService)
+        public EmployeesController(IEmployeeService employeeService, IEmployeeTypeService employeeTypeService, IBranchService branchService)
         {
             _employeeService = employeeService;
+            _employeeTypeService = employeeTypeService;
+            _branchService = branchService;
+            
         }
 
         // GET: Employees
+        [Route("index")]
         public ActionResult Index()
         {
             var hr_employee = _employeeService.GetAll();
@@ -33,11 +42,14 @@ namespace StaitEstate.View.Controllers.Sales
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            hr_employee hr_employee = db.hr_employee.Find(id);
+            hr_employee hr_employee = _employeeService.GetById(id);
             if (hr_employee == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", hr_employee.emp_type_id);
+            ViewBag.emp_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name", hr_employee.emp_branch_id);
             return View(hr_employee);
         }
 
@@ -45,8 +57,7 @@ namespace StaitEstate.View.Controllers.Sales
         [Route("create/{branchId?}")]
         public ActionResult Create(int branchId)
         {
-            ViewBag.emp_type_id = new SelectList(db.hr_employee_type, "emp_type_id", "emp_type_name");
-            ViewBag.emp_branch_id = new SelectList(db.sys_branch, "branch_id", "branch_name");
+            ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll() , "emp_type_id", "emp_type_name");
             return View();
         }
 
@@ -55,34 +66,63 @@ namespace StaitEstate.View.Controllers.Sales
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(hr_employee hr_employee, int branchId)
+        [Route("create/{branchId?}")]
+        public ActionResult Create(hr_employee model, int branchId, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
-                db.hr_employee.Add(hr_employee);
-                db.SaveChanges();
+                string extension = Path.GetExtension(imageFile.FileName);
+
+                if (!(extension.Equals(".jpg") || extension.Equals(".JPG")))
+                {
+                    ModelState.AddModelError(string.Empty, "Not an accepted image type!");
+                    ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", model.emp_type_id);
+                    return View(model);
+                }
+
+
+
+                string fileName = model.emp_code + extension;
+                
+                model.emp_image = "~/File/Employee/" + fileName;
+
+                fileName = Path.Combine(Server.MapPath("~/File/Employee/"), fileName);
+                
+                imageFile.SaveAs(fileName);
+
+                model.emp_branch_id = branchId;
+
+
+
+
+                _employeeService.Create(model);
+
+
+
+
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.emp_type_id = new SelectList(db.hr_employee_type, "emp_type_id", "emp_type_name", hr_employee.emp_type_id);
-            ViewBag.emp_branch_id = new SelectList(db.sys_branch, "branch_id", "branch_name", hr_employee.emp_branch_id);
-            return View(hr_employee);
+            ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", model.emp_type_id);
+            return View(model);
         }
 
         // GET: Employees/Edit/5
+        [Route("Edit/{id?}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            hr_employee hr_employee = db.hr_employee.Find(id);
+            hr_employee hr_employee = _employeeService.GetById(id);
             if (hr_employee == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.emp_type_id = new SelectList(db.hr_employee_type, "emp_type_id", "emp_type_name", hr_employee.emp_type_id);
-            ViewBag.emp_branch_id = new SelectList(db.sys_branch, "branch_id", "branch_name", hr_employee.emp_branch_id);
+            ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", hr_employee.emp_type_id);
+            ViewBag.emp_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name", hr_employee.emp_branch_id);
             return View(hr_employee);
         }
 
@@ -91,47 +131,38 @@ namespace StaitEstate.View.Controllers.Sales
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "emp_id,emp_code,emp_name,emp_phone,emp_father_or_husband_name,emp_mother_name,emp_permanent_address,emp_present_address,emp_dob,emp_birth_place,emp_type_id,emp_branch_id,emp_image,deleted")] hr_employee hr_employee)
+        [Route("Edit/{id?}")]
+        public ActionResult Edit(hr_employee model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hr_employee).State = EntityState.Modified;
-                db.SaveChanges();
+                string extension = Path.GetExtension(imageFile.FileName);
+
+                if (!(extension.Equals(".jpg") || extension.Equals(".JPG")))
+                {
+                    ModelState.AddModelError(string.Empty, "Not an accepted image type!");
+                    ViewBag.emp_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name", model.emp_branch_id);
+                    ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", model.emp_type_id);
+                    return View(model);
+                }
+
+                string fileName = model.emp_code + extension;
+
+                model.emp_image = "~/File/Employee/" + fileName;
+
+                fileName = Path.Combine(Server.MapPath("~/File/Employee/"), fileName);
+
+                imageFile.SaveAs(fileName);
+
+                _employeeService.Edit(model);
                 return RedirectToAction("Index");
             }
-            ViewBag.emp_type_id = new SelectList(db.hr_employee_type, "emp_type_id", "emp_type_name", hr_employee.emp_type_id);
-            ViewBag.emp_branch_id = new SelectList(db.sys_branch, "branch_id", "branch_name", hr_employee.emp_branch_id);
-            return View(hr_employee);
+            ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", model.emp_type_id);
+            ViewBag.emp_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name", model.emp_branch_id);
+            return View(model);
         }
 
-        // GET: Employees/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            hr_employee hr_employee = db.hr_employee.Find(id);
-            if (hr_employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(hr_employee);
-        }
-
-        // POST: Employees/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            hr_employee hr_employee = db.hr_employee.Find(id);
-            db.hr_employee.Remove(hr_employee);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-
-
+        
         //Json
         public JsonResult GetEmp(int? id = -1)
         {
@@ -246,6 +277,29 @@ namespace StaitEstate.View.Controllers.Sales
                 }, JsonRequestBehavior.AllowGet);
             }
 
+        }
+
+
+        public JsonResult GetEmpCode()
+        {
+            var a = _employeeService.GetAll().Max(e => e.emp_id);
+
+            string empCode = "emp-" + (++a).ToString();
+
+            return Json(empCode, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteEmp(int id)
+        {
+            try
+            {
+                _employeeService.Delete(id);
+                return Json("Done", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

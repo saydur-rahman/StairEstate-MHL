@@ -197,6 +197,7 @@
     <Compile Include="Controllers\hr_employeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Sales\EmployeesController.cs" />
+    <Compile Include="Controllers\Sales\hr_employeeDemoController.cs" />
     <Compile Include="Controllers\System\UserController.cs" />
     <Compile Include="Controllers\System\UserPermissionController.cs" />
     <Compile Include="Controllers\System\UserTypeController.cs" />
@@ -10753,9 +10754,15 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\hr_employeeDemo\Create.cshtml" />
+    <Content Include="Views\hr_employeeDemo\Delete.cshtml" />
+    <Content Include="Views\hr_employeeDemo\Details.cshtml" />
+    <Content Include="Views\hr_employeeDemo\Edit.cshtml" />
+    <Content Include="Views\hr_employeeDemo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="File\Employee\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\FunctionScripts\" />
   </ItemGroup>
