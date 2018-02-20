@@ -5,6 +5,7 @@ namespace StairEstate.Entity
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class hr_employee
     {
@@ -66,5 +67,7 @@ namespace StairEstate.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sales_customer> sales_customer { get; set; }
+
+        //public HttpPostedFileBase ImageFile  { get; set; }
     }
 }

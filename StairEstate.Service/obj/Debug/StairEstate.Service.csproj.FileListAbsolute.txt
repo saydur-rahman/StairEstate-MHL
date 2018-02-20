@@ -131,3 +131,22 @@ C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Service\obj\Debug\StairE
 C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Service\obj\Debug\StairEstate.Service.csproj.CoreCompileInputs.cache
 C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Service\obj\Debug\StairEstate.Service.dll
 C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Service\obj\Debug\StairEstate.Service.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Service.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Service.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\TrackableEntities.Common.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\TrackableEntities.Common.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\obj\Debug\StairEstate.Service.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\obj\Debug\StairEstate.Service.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\obj\Debug\StairEstate.Service.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Service\obj\Debug\StairEstate.Service.pdb

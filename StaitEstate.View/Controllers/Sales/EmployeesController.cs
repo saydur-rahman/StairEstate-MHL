@@ -42,8 +42,8 @@ namespace StaitEstate.View.Controllers.Sales
         }
 
         // GET: Employees/Create
-        [Route("create/{id?}")]
-        public ActionResult Create(int id)
+        [Route("create/{branchId?}")]
+        public ActionResult Create(int branchId)
         {
             ViewBag.emp_type_id = new SelectList(db.hr_employee_type, "emp_type_id", "emp_type_name");
             ViewBag.emp_branch_id = new SelectList(db.sys_branch, "branch_id", "branch_name");
@@ -55,7 +55,7 @@ namespace StaitEstate.View.Controllers.Sales
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "emp_id,emp_code,emp_name,emp_phone,emp_father_or_husband_name,emp_mother_name,emp_permanent_address,emp_present_address,emp_dob,emp_birth_place,emp_type_id,emp_branch_id,emp_image,deleted")] hr_employee hr_employee)
+        public ActionResult Create(hr_employee hr_employee, int branchId)
         {
             if (ModelState.IsValid)
             {
@@ -142,7 +142,7 @@ namespace StaitEstate.View.Controllers.Sales
                     Id = e.emp_id,
                     Code = e.emp_code,
                     Name = e.emp_name,
-                    Email=  e.emp_email,
+                    Email = e.emp_email,
                     Phone = e.emp_phone,
                     Father = e.emp_father_or_husband_name,
                     Mother = e.emp_mother_name,
@@ -245,7 +245,7 @@ namespace StaitEstate.View.Controllers.Sales
                     isSuccessful = false
                 }, JsonRequestBehavior.AllowGet);
             }
-            
+
         }
     }
 }
