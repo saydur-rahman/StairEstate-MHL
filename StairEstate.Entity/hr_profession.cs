@@ -21,7 +21,7 @@ namespace StairEstate.Entity
         [StringLength(50)]
         public string profession_name { get; set; }
 
-        public int? profession_presidences { get; set; }
+        public int profession_presidences { get; set; }
 
         public bool? deleted { get; set; }
 

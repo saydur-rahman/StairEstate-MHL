@@ -46,6 +46,7 @@
     <Compile Include="BranchService.cs" />
     <Compile Include="CollectorService.cs" />
     <Compile Include="CountryService.cs" />
+    <Compile Include="CustomerService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="EmployeeTypeService.cs" />
     <Compile Include="Generics\IService.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="IBranchService.cs" />
     <Compile Include="ICollectorService.cs" />
     <Compile Include="ICountryService.cs" />
+    <Compile Include="ICustomerService.cs" />
     <Compile Include="IEmployeeService.cs" />
     <Compile Include="IEmployeeTypeService.cs" />
     <Compile Include="IMenuService.cs" />

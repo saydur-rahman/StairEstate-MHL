@@ -49,7 +49,7 @@ namespace StaitEstate.View.Controllers.Sales
             }
 
             ViewBag.collector_sales_person_id = new SelectList(_employeeService.GetAll().Where(e => e.deleted != true), "emp_id", "emp_code");
-            ViewBag.collector_profession_id = new SelectList(_professionService.GetAll().Where(e => e.deleted != true), "profession_id", "profession_name");
+            ViewBag.collector_profession_id = new SelectList(_professionService.GetAll().Where(e => e.deleted != true).OrderByDescending(p => p.profession_id), "profession_id", "profession_name");
             ViewBag.collector_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name");
 
             return View(sales_collector);
@@ -57,12 +57,14 @@ namespace StaitEstate.View.Controllers.Sales
 
         // GET: Collectors/Create
         [Route("create/{branchId?}")]
-        public ActionResult Create(int branchId)
+        public ActionResult Create(int? branchId = -1)
         {
+            if (branchId == -1 || branchId == null)
+                branchId = _branchService.GetAll().FirstOrDefault().branch_id;
             //ViewBag.collector_sales_person_id = new SelectList(_employeeService.GetAll().Where(e => e.emp_branch_id == branchId), "emp_id", "emp_code");
             //ViewBag.collector_profession_id = new SelectList(_professionService.GetAll().OrderBy(p => p.profession_presidences), "profession_id", "profession_name");
             ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
-            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+            ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
             return View();
         }
 
@@ -72,10 +74,13 @@ namespace StaitEstate.View.Controllers.Sales
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("create/{branchId?}")]
-        public ActionResult Create(sales_collector model, int branchId, string profession, string employee, HttpPostedFileBase imageFile)
+        public ActionResult Create(sales_collector model, int? branchId, string profession, string employee, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
+                if (branchId == -1 || branchId == null)
+                    branchId = _branchService.GetAll().FirstOrDefault().branch_id;
+
                 model.collector_branch_id = branchId;
 
 
@@ -95,7 +100,7 @@ namespace StaitEstate.View.Controllers.Sales
                     model.collector_profession_id = pro.profession_id;
                 }
 
-                var sal = (hr_employee)_employeeService.GetAll().Where(e => e.emp_code.Contains(employee))
+                var sal = (hr_employee)_employeeService.GetAll().Where(e => e.emp_code.Contains(employee) && e.deleted != true && e.emp_branch_id == branchId)
                     .SingleOrDefault();
                 if (sal != null)
                 {
@@ -106,7 +111,7 @@ namespace StaitEstate.View.Controllers.Sales
                 {
                     ModelState.AddModelError(string.Empty, "Sales Person Code not correct!");
                     ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
-                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+                    ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
                     return View(model);
                 }
 
@@ -115,7 +120,7 @@ namespace StaitEstate.View.Controllers.Sales
                 {
                     ModelState.AddModelError(string.Empty, "Not an accepted image type!");
                     ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
-                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+                    ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
                     return View(model);
                 }
 
@@ -136,7 +141,7 @@ namespace StaitEstate.View.Controllers.Sales
             }
 
             ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
-            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+            ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
             return View(model);
         }
 
@@ -216,7 +221,7 @@ namespace StaitEstate.View.Controllers.Sales
 
                     ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
                     ViewBag.Branchs = _branchService.GetAll();
-                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+                    ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
 
                     return View(model);
                 }
@@ -234,7 +239,7 @@ namespace StaitEstate.View.Controllers.Sales
 
                     ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
                     ViewBag.Branchs = _branchService.GetAll();
-                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+                    ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
 
                     return View(model);
                 }
@@ -253,7 +258,7 @@ namespace StaitEstate.View.Controllers.Sales
 
             ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
             ViewBag.Branchs = _branchService.GetAll();
-            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+            ViewBag.Professions = _professionService.GetAll().OrderByDescending(p => p.profession_presidences);
             return View(model);
         }
 

@@ -106,6 +106,10 @@ namespace StaitEstate.View
             //For Profession
             container.RegisterType<IProfessionService, ProfessionService>();
             container.RegisterType<IRepository<hr_profession>, Repository<hr_profession>>();
+
+            //For Customer
+            container.RegisterType<ICustomerService, CustomerService>();
+            container.RegisterType<IRepository<sales_customer>, Repository<sales_customer>>();
         }
     }
 }

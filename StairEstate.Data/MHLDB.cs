@@ -254,7 +254,7 @@ namespace StairEstate.Data
                 .HasMany(e => e.sales_nominee)
                 .WithOptional(e => e.sales_nominee_type)
                 .HasForeignKey(e => e.nominee_position_id);
-        
+
             modelBuilder.Entity<survey_agenda>()
                 .HasMany(e => e.survey_master)
                 .WithOptional(e => e.survey_agenda)

@@ -92,7 +92,7 @@ C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debu
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\EntityFramework.xml
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\bin\Debug\TrackableEntities.Common.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.csprojResolveAssemblyReference.cache
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.csproj.CoreCompileInputs.cache
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.dll
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.pdb
-C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Entity\obj\Debug\StairEstate.Entity.csprojResolveAssemblyReference.cache
