@@ -5,130 +5,188 @@
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>sales_collector</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_code, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_code, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_code, "", new { @class = "text-danger" })
+<div class="parentDiv panel mainbody panel-body">
+
+    <div class="head form-inline panel-heading" style="color: black">
+        <h4>Create a new Collector</h4>
+    </div>
+
+    @using (Html.BeginForm("Create", "Collectors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+
+            <br />
+            <br />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Collector's Code</label>
+                <div class="col-md-4">
+                    <input type="text" name="collector_code" class="form-control" value="" id="col_code" readonly="" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_phone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_phone, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Full Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_father_or_husband_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_father_or_husband_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_father_or_husband_name, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Mobile No.</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_phone, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_phone, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_mother_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_mother_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_mother_name, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Father or Husband's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_father_or_husband_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_father_or_husband_name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_parmanent_address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_parmanent_address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_parmanent_address, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Mother's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_mother_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_mother_name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_present_address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_present_address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_present_address, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Permanent Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_parmanent_address, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_parmanent_address, "", new { @class = "text-danger" })
+                </div>
+                <span class="checkbox col-md-4">
+                    <label><input type="button" id="perAdd" value="" class="btn btn-warning" onclick="addressSameClicked()">If Same</label>
+                </span>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_dob, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_dob, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_dob, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Present Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_present_address, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_present_address, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_birth_place, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_birth_place, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_birth_place, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Date of Birth</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_dob, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_dob, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_name, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Birth Place</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_birth_place, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_birth_place, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_profession_id, "collector_profession_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("collector_profession_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.collector_profession_id, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Profession</label>
+                <div class="col-md-4">
+                    <datalist id="profession">
+                        @{
+                            foreach (var pro in ViewBag.Professions)
+                            {
+                                <option value="@pro.profession_name">
+                                    @pro.profession_name
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="profession" name="profession" class="form-control" required="">
+
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_sales_person_id, "collector_sales_person_id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("collector_sales_person_id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.collector_sales_person_id, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Sales Person</label>
+                <div class="col-md-4">
+                    <datalist id="sp">
+                        @{
+                            foreach (var sp in ViewBag.SP)
+                            {
+                                <option value="@sp.emp_code">
+                                    @sp.emp_code
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="sp" name="employee" class="form-control" required="">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.collector_image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.collector_image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.collector_image, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Image</label>
+                <div class="col-md-4">
+                    <img id="imgpreview" height="200" width="200" src="" style="border-width: 1px; visibility: hidden;" />
+                    <input type="file" name="imageFile" class="" onchange="showpreview(this);" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.deleted, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.deleted)
-                    @Html.ValidationMessageFor(model => model.deleted, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Collectors", null, new { @class = "btn btn-sm btn-small btn-default return" })
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+<script>
+    function showpreview(input) {
+
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgpreview').css('visibility', 'visible');
+                $('#imgpreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+
+    //$(function () {
+    //    $("#datepicker").datepicker();
+    //});
+
+
+
+    $.get("/collectors/getcolcode", function (data, status) {
+        $('#col_code').removeAttr('readonly').val(data);
+        $('#col_code').attr('readonly', "");
+    });
+
+    function addressSameClicked() {
+        var a = $('#collector_parmanent_address').val();
+        var b = $('#collector_present_address');
+        b.val(a);
+        console.log(b);
+    }
+
+</script>

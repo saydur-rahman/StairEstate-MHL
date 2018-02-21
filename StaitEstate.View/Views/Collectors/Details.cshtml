@@ -5,119 +5,139 @@
     Layout = "~/Views/Shared/_InnerLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="parentDiv panel mainbody panel-body">
+    
+    <div class="head form-inline panel-heading" style="color: black">
+        <h4>Detals Collector</h4>
+    </div>
 
-<div>
-    <h4>sales_collector</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.hr_employee.emp_code)
-        </dt>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.hr_employee.emp_code)
-        </dd>
+    <div class="form-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.hr_profession.profession_name)
-        </dt>
+        <br />
+        <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.hr_profession.profession_name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_code)
-        </dt>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_code)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2"></label>
+            <div class="col-md-4">
+                <img id="imgpreview" height="200" width="200" src="@Url.Content(Model.collector_image)" style="border-width: 1px; visibility: visible;" />
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_phone)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Colletor's Code</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_code, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_code, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_phone)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_father_or_husband_name)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Full Name</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_father_or_husband_name)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mobile No.</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_phone, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_mother_name)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Father of Husband's Name</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_father_or_husband_name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_father_or_husband_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_mother_name)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Mother's Name</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_mother_name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_mother_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_parmanent_address)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Permanent Address</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_parmanent_address, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_parmanent_address, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_parmanent_address)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Present Address</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_present_address, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_present_address, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_present_address)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Date of Birth</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_dob, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_dob, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_present_address)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Birth Place</label>
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.collector_birth_place, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                @Html.ValidationMessageFor(model => model.collector_birth_place, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_dob)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_dob)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Profession</label>
+            <div class="col-md-4">
+                @Html.DropDownList("collector_profession_id", null, htmlAttributes: new { @class = "form-control", @disabled = "" })
+                @Html.ValidationMessageFor(model => model.collector_profession_id, "", new { @class = "text-danger"  })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_birth_place)
-        </dt>
+        <div class="form-group">
+            <label class="control-label col-md-2">Branch</label>
+            <div class="col-md-4">
+                @Html.DropDownList("collector_branch_id", null, htmlAttributes: new { @class = "form-control", @disabled = "" })
+                @Html.ValidationMessageFor(model => model.collector_branch_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_birth_place)
-        </dd>
+        <div class="form-group">
+            <label class="control-label col-md-2">Sales Person</label>
+            <div class="col-md-4">
+                @Html.DropDownList("collector_sales_person_id", null, htmlAttributes: new { @class = "form-control", @disabled = "" })
+                @Html.ValidationMessageFor(model => model.collector_sales_person_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.collector_name)
-        </dd>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Edit", "Edit", "Collectors", new{ id = Model.collector_id } , new { @class = "btn btn-sm btn-small btn-primary return" })
+            </div>
+        </div>
+    </div>
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.collector_image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.collector_image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.deleted)
-        </dd>
-
-    </dl>
+        <div>
+            @Html.ActionLink("Back to List", "Index", "Collectors", null, new { @class = "btn btn-sm btn-small btn-default return" })
+        </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.collector_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

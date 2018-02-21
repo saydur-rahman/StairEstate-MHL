@@ -132,7 +132,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index", "Employees", null, new { @class = "btn btn-sm btn-small btn-default return" })
+        @Html.ActionLink("Back to List", "Index", "Employees", new { id = Model.emp_id }, new { @class = "btn btn-sm btn-small btn-default return" })
     </div>
 </div>
 

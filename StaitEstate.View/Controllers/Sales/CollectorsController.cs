@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -12,43 +10,59 @@ using StairEstate.Service;
 
 namespace StaitEstate.View.Controllers.Sales
 {
+    [RoutePrefix("sales/collectors")]
     public class CollectorsController : Controller
     {
         private readonly ICollectorService _collectorService;
-        private MHLDB db = new MHLDB();
+        private readonly IEmployeeService _employeeService;
+        private readonly IProfessionService _professionService;
+        private readonly IBranchService _branchService;
 
 
-        public CollectorsController(ICollectorService collectorService)
+        public CollectorsController(ICollectorService collectorService, IEmployeeService employeeService, IProfessionService professionService, IBranchService branchService)
         {
             _collectorService = collectorService;
+            _employeeService = employeeService;
+            _professionService = professionService;
+            _branchService = branchService;
         }
 
         // GET: Collectors
+        [Route("index")]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: Collectors/Details/5
+        [Route("Details/{id?}")]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sales_collector sales_collector = db.sales_collector.Find(id);
+            sales_collector sales_collector = _collectorService.GetById(id);
             if (sales_collector == null)
             {
                 return HttpNotFound();
             }
+
+            ViewBag.collector_sales_person_id = new SelectList(_employeeService.GetAll().Where(e => e.deleted != true), "emp_id", "emp_code");
+            ViewBag.collector_profession_id = new SelectList(_professionService.GetAll().Where(e => e.deleted != true), "profession_id", "profession_name");
+            ViewBag.collector_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name");
+
             return View(sales_collector);
         }
 
         // GET: Collectors/Create
+        [Route("create/{branchId?}")]
         public ActionResult Create(int branchId)
         {
-            ViewBag.collector_sales_person_id = new SelectList(db.hr_employee, "emp_id", "emp_code");
-            ViewBag.collector_profession_id = new SelectList(db.hr_profession, "profession_id", "profession_name");
+            //ViewBag.collector_sales_person_id = new SelectList(_employeeService.GetAll().Where(e => e.emp_branch_id == branchId), "emp_id", "emp_code");
+            //ViewBag.collector_profession_id = new SelectList(_professionService.GetAll().OrderBy(p => p.profession_presidences), "profession_id", "profession_name");
+            ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
+            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
             return View();
         }
 
@@ -57,34 +71,91 @@ namespace StaitEstate.View.Controllers.Sales
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "collector_id,collector_code,collector_phone,collector_father_or_husband_name,collector_mother_name,collector_parmanent_address,collector_present_address,collector_dob,collector_birth_place,collector_name,collector_profession_id,collector_sales_person_id,collector_image,deleted")] sales_collector sales_collector)
+        [Route("create/{branchId?}")]
+        public ActionResult Create(sales_collector model, int branchId, string profession, string employee, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
-                db.sales_collector.Add(sales_collector);
-                db.SaveChanges();
+                model.collector_branch_id = branchId;
+
+
+                var pro = (hr_profession)_professionService.GetAll().Where(p => p.profession_name.Contains(profession)).SingleOrDefault();
+                if (pro != null)
+                {
+                    model.collector_profession_id = pro.profession_id;
+                }
+                else
+                {
+                    _professionService.Create(new hr_profession()
+                    {
+                        profession_name = profession,
+                    });
+                    pro = (hr_profession)_professionService.GetAll().Where(p => p.profession_name.Contains(profession)).SingleOrDefault();
+
+                    model.collector_profession_id = pro.profession_id;
+                }
+
+                var sal = (hr_employee)_employeeService.GetAll().Where(e => e.emp_code.Contains(employee))
+                    .SingleOrDefault();
+                if (sal != null)
+                {
+                    model.collector_sales_person_id = sal.emp_id;
+                }
+
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Sales Person Code not correct!");
+                    ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
+                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+                    return View(model);
+                }
+
+                string extension = Path.GetExtension(imageFile.FileName);
+                if (!(extension.Equals(".jpg") || extension.Equals(".JPG")))
+                {
+                    ModelState.AddModelError(string.Empty, "Not an accepted image type!");
+                    ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
+                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+                    return View(model);
+                }
+
+
+                string fileName = model.collector_code + extension;
+
+                model.collector_image = "~/File/Collector/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/File/Collector/"), fileName);
+                imageFile.SaveAs(fileName);
+
+                pro.profession_presidences += 1;
+                _professionService.Edit(pro);
+
+                _collectorService.Create(model);
+
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.collector_sales_person_id = new SelectList(db.hr_employee, "emp_id", "emp_code", sales_collector.collector_sales_person_id);
-            ViewBag.collector_profession_id = new SelectList(db.hr_profession, "profession_id", "profession_name", sales_collector.collector_profession_id);
-            return View(sales_collector);
+            ViewBag.SP = _employeeService.GetAll().Where(e => e.emp_branch_id == branchId && e.deleted != true);
+            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+            return View(model);
         }
 
         // GET: Collectors/Edit/5
+        [Route("Edit/{id?}")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            sales_collector sales_collector = db.sales_collector.Find(id);
+            sales_collector sales_collector = _collectorService.GetById(id);
             if (sales_collector == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.collector_sales_person_id = new SelectList(db.hr_employee, "emp_id", "emp_code", sales_collector.collector_sales_person_id);
-            ViewBag.collector_profession_id = new SelectList(db.hr_profession, "profession_id", "profession_name", sales_collector.collector_profession_id);
+            ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
+            ViewBag.Branchs = _branchService.GetAll();
+            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
             return View(sales_collector);
         }
 
@@ -93,53 +164,100 @@ namespace StaitEstate.View.Controllers.Sales
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "collector_id,collector_code,collector_phone,collector_father_or_husband_name,collector_mother_name,collector_parmanent_address,collector_present_address,collector_dob,collector_birth_place,collector_name,collector_profession_id,collector_sales_person_id,collector_image,deleted")] sales_collector sales_collector)
+        public ActionResult Edit(sales_collector model, string branch, string profession, string employee, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sales_collector).State = EntityState.Modified;
-                db.SaveChanges();
+                if (imageFile != null)
+                {
+                    string extension = Path.GetExtension(imageFile.FileName);
+
+                    if (!(extension.Equals(".jpg") || extension.Equals(".JPG")))
+                    {
+                        ModelState.AddModelError(string.Empty, "Not an accepted image type!");
+                        return View(model);
+                    }
+
+                    string fileName = model.collector_code + extension;
+
+                    model.collector_image = "~/File/Collector/" + fileName;
+
+                    fileName = Path.Combine(Server.MapPath("~/File/Collector/"), fileName);
+
+                    imageFile.SaveAs(fileName);
+                }
+
+                var pro = (hr_profession)_professionService.GetAll().Where(p => p.profession_name.Contains(profession)).SingleOrDefault();
+                if (pro != null)
+                {
+                    model.collector_profession_id = pro.profession_id;
+                }
+                else
+                {
+                    _professionService.Create(new hr_profession()
+                    {
+                        profession_name = profession,
+                    });
+                    pro = (hr_profession)_professionService.GetAll().Where(p => p.profession_name.Contains(profession)).SingleOrDefault();
+
+                    model.collector_profession_id = pro.profession_id;
+                }
+
+                var sal = (hr_employee)_employeeService.GetAll().Where(e => e.emp_code.Contains(employee))
+                    .SingleOrDefault();
+                if (sal != null)
+                {
+                    model.collector_sales_person_id = sal.emp_id;
+                }
+
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Sales Person Code not correct!");
+
+                    ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
+                    ViewBag.Branchs = _branchService.GetAll();
+                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+
+                    return View(model);
+                }
+
+
+                var br = _branchService.GetAll().Where(b => b.branch_name.Contains(branch)).SingleOrDefault();
+                if (br != null)
+                {
+                    model.collector_branch_id = br.branch_id;
+                }
+
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Branch Name not correct!");
+
+                    ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
+                    ViewBag.Branchs = _branchService.GetAll();
+                    ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+
+                    return View(model);
+                }
+
+                pro.profession_presidences += 1;
+                _professionService.Edit(pro);
+
+
+                _collectorService.Edit(model);
+
+
+
+
                 return RedirectToAction("Index");
             }
-            ViewBag.collector_sales_person_id = new SelectList(db.hr_employee, "emp_id", "emp_code", sales_collector.collector_sales_person_id);
-            ViewBag.collector_profession_id = new SelectList(db.hr_profession, "profession_id", "profession_name", sales_collector.collector_profession_id);
-            return View(sales_collector);
+
+            ViewBag.SP = _employeeService.GetAll().Where(e => e.deleted != true);
+            ViewBag.Branchs = _branchService.GetAll();
+            ViewBag.Professions = _professionService.GetAll().OrderBy(p => p.profession_presidences);
+            return View(model);
         }
 
-        // GET: Collectors/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            sales_collector sales_collector = db.sales_collector.Find(id);
-            if (sales_collector == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sales_collector);
-        }
-
-        // POST: Collectors/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            sales_collector sales_collector = db.sales_collector.Find(id);
-            db.sales_collector.Remove(sales_collector);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
 
 
         //Json
@@ -218,6 +336,32 @@ namespace StaitEstate.View.Controllers.Sales
                 });
 
             return Json(cols, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult GetColCode()
+        {
+            var a = _collectorService.GetAll().Max(c => c.collector_id);
+
+            string colCode = "collector-" + (++a).ToString();
+
+            return Json(colCode, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult DeleteCol(int id)
+        {
+            try
+            {
+                var col = _collectorService.GetById(id);
+                col.deleted = true;
+                _collectorService.Edit(col);
+                return Json("Done", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }
         }
 
 

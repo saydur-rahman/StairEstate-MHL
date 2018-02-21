@@ -194,9 +194,9 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
-    <Compile Include="Controllers\hr_employeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Sales\CollectorsController.cs" />
+    <Compile Include="Controllers\Sales\CustomersController.cs" />
     <Compile Include="Controllers\Sales\EmployeesController.cs" />
     <Compile Include="Controllers\System\UserController.cs" />
     <Compile Include="Controllers\System\UserPermissionController.cs" />
@@ -10759,9 +10759,15 @@
     <Content Include="Views\Collectors\Details.cshtml" />
     <Content Include="Views\Collectors\Edit.cshtml" />
     <Content Include="Views\Collectors\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="File\Collector\" />
     <Folder Include="File\Employee\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\FunctionScripts\" />

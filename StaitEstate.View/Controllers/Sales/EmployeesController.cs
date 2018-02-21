@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using StairEstate.Data;
 using StairEstate.Entity;
 using StairEstate.Service;
 
@@ -135,23 +133,30 @@ namespace StaitEstate.View.Controllers.Sales
         {
             if (ModelState.IsValid)
             {
-                string extension = Path.GetExtension(imageFile.FileName);
 
-                if (!(extension.Equals(".jpg") || extension.Equals(".JPG")))
+                if (imageFile != null)
                 {
-                    ModelState.AddModelError(string.Empty, "Not an accepted image type!");
-                    ViewBag.emp_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name", model.emp_branch_id);
-                    ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id", "emp_type_name", model.emp_type_id);
-                    return View(model);
+
+                    string extension = Path.GetExtension(imageFile.FileName);
+
+                    if (!(extension.Equals(".jpg") || extension.Equals(".JPG")))
+                    {
+                        ModelState.AddModelError(string.Empty, "Not an accepted image type!");
+                        ViewBag.emp_branch_id = new SelectList(_branchService.GetAll(), "branch_id", "branch_name",
+                            model.emp_branch_id);
+                        ViewBag.emp_type_id = new SelectList(_employeeTypeService.GetAll(), "emp_type_id",
+                            "emp_type_name", model.emp_type_id);
+                        return View(model);
+                    }
+
+                    string fileName = model.emp_code + extension;
+
+                    model.emp_image = "~/File/Employee/" + fileName;
+
+                    fileName = Path.Combine(Server.MapPath("~/File/Employee/"), fileName);
+
+                    imageFile.SaveAs(fileName);
                 }
-
-                string fileName = model.emp_code + extension;
-
-                model.emp_image = "~/File/Employee/" + fileName;
-
-                fileName = Path.Combine(Server.MapPath("~/File/Employee/"), fileName);
-
-                imageFile.SaveAs(fileName);
 
                 _employeeService.Edit(model);
                 return RedirectToAction("Index");
@@ -292,7 +297,10 @@ namespace StaitEstate.View.Controllers.Sales
         {
             try
             {
-                _employeeService.Delete(id);
+                var emp = _employeeService.GetById(id);
+                emp.deleted = true;
+                _employeeService.Edit(emp);
+
                 return Json("Done", JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)

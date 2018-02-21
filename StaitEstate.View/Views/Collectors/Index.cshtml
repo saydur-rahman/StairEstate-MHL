@@ -82,11 +82,11 @@
                     <td>
 
                         @{
-            var urlEdit = Url.Action("Edit", "Collectors", new { id = "{{ emp.Id }}" });
-            urlEdit = HttpUtility.UrlDecode(urlEdit);
+                            var urlEdit = Url.Action("Edit", "Collectors", new { id = "{{ col.Id }}" });
+                            urlEdit = HttpUtility.UrlDecode(urlEdit);
 
-            var urlDetails = Url.Action("Details", "Collectors", new { id = "{{ emp.Id }}" });
-            urlDetails = HttpUtility.UrlDecode(urlDetails);
+                            var urlDetails = Url.Action("Details", "Collectors", new { id = "{{ col.Id }}" });
+                            urlDetails = HttpUtility.UrlDecode(urlDetails);
                         }
                         <a data-ng-href="@urlEdit" class="btn btn-primary btn-small btn-sm">Edit</a> |
                         <a data-ng-href="@urlDetails" class="btn btn-warning btn-small btn-sm">Details</a> |
@@ -125,8 +125,12 @@
                 return $http.get('/System/Users/GetBranch/' + id);
             },
 
-            getCol: function(branchId) {
+            getCol: function (branchId) {
                 return $http.get('/collectors/GetCollectors/' + branchId);
+            },
+
+            deleteCol: function(id) {
+                return $http.get('/collectors/deletecol/' + id);
             }
 
         };
@@ -160,13 +164,13 @@
                 });
         }
 
-        $scope.deleteEmp = function(emp) {
-            $ngBootbox.confirm('Delete Employee: ' +  emp.Code)
+        $scope.deleteCol = function (col) {
+            $ngBootbox.confirm('Delete Collector: ' + col.Code)
                 .then(function () {
-                    ColService.deleteEmp(emp.Id)
+                    ColService.deleteCol(col.Id)
                         .then(function (res) {
-                            if(res.data === 'Done')
-                                $scope.emps.splice($scope.emps.indexOf(emp), 1);
+                            if (res.data === 'Done')
+                                $scope.cols.splice($scope.cols.indexOf(col), 1);
                             else
                                 $ngBootbox.alert("Some thing went wrong");
                         });

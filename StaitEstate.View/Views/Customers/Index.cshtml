@@ -1,0 +1,125 @@
+﻿@model IEnumerable<StairEstate.Entity.sales_customer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.hr_employee.emp_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hr_profession.profession_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sales_collector.collector_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_father_or_husband_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_mother_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_permanent_address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_present_address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_birth_place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_branch_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer_image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deleted)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.hr_employee.emp_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hr_profession.profession_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sales_collector.collector_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_father_or_husband_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_mother_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_permanent_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_present_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_dob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_birth_place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_branch_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_image)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deleted)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.customer_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.customer_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.customer_id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
