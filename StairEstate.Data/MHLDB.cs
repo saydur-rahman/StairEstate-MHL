@@ -15,7 +15,14 @@ namespace StairEstate.Data
         }
 
         public virtual DbSet<company> companies { get; set; }
+        public virtual DbSet<hr_employee> hr_employee { get; set; }
+        public virtual DbSet<hr_employee_type> hr_employee_type { get; set; }
+        public virtual DbSet<hr_profession> hr_profession { get; set; }
         public virtual DbSet<lisence> lisences { get; set; }
+        public virtual DbSet<sales_collector> sales_collector { get; set; }
+        public virtual DbSet<sales_customer> sales_customer { get; set; }
+        public virtual DbSet<sales_nominee> sales_nominee { get; set; }
+        public virtual DbSet<sales_nominee_type> sales_nominee_type { get; set; }
         public virtual DbSet<survey_agenda> survey_agenda { get; set; }
         public virtual DbSet<survey_answer> survey_answer { get; set; }
         public virtual DbSet<survey_html> survey_html { get; set; }
@@ -61,6 +68,74 @@ namespace StairEstate.Data
                 .Property(e => e.started)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_father_or_husband_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_mother_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_permanent_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_present_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_birth_place)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_employee>()
+                .Property(e => e.emp_image)
+                .IsFixedLength();
+
+            modelBuilder.Entity<hr_employee>()
+                .HasMany(e => e.sales_collector)
+                .WithOptional(e => e.hr_employee)
+                .HasForeignKey(e => e.collector_sales_person_id);
+
+            modelBuilder.Entity<hr_employee>()
+                .HasMany(e => e.sales_customer)
+                .WithOptional(e => e.hr_employee)
+                .HasForeignKey(e => e.customer_sales_person_id);
+
+            modelBuilder.Entity<hr_employee_type>()
+                .Property(e => e.emp_type_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_profession>()
+                .Property(e => e.profession_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<hr_profession>()
+                .HasMany(e => e.sales_collector)
+                .WithOptional(e => e.hr_profession)
+                .HasForeignKey(e => e.collector_profession_id);
+
+            modelBuilder.Entity<hr_profession>()
+                .HasMany(e => e.sales_customer)
+                .WithOptional(e => e.hr_profession)
+                .HasForeignKey(e => e.customer_profession_id);
+
             modelBuilder.Entity<lisence>()
                 .Property(e => e.code)
                 .IsUnicode(false);
@@ -68,6 +143,117 @@ namespace StairEstate.Data
             modelBuilder.Entity<lisence>()
                 .Property(e => e.expires)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_father_or_husband_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_mother_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_parmanent_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_present_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_birth_place)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_collector>()
+                .Property(e => e.collector_image)
+                .IsFixedLength();
+
+            modelBuilder.Entity<sales_collector>()
+                .HasMany(e => e.sales_customer)
+                .WithOptional(e => e.sales_collector)
+                .HasForeignKey(e => e.customer_collector_id);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_father_or_husband_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_mother_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_permanent_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_present_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_birth_place)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_customer>()
+                .Property(e => e.customer_image)
+                .IsFixedLength();
+
+            modelBuilder.Entity<sales_customer>()
+                .HasMany(e => e.sales_nominee)
+                .WithOptional(e => e.sales_customer)
+                .HasForeignKey(e => e.nominee_customer_id);
+
+            modelBuilder.Entity<sales_nominee>()
+                .Property(e => e.nominee_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_nominee>()
+                .Property(e => e.nominee_identification_no)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_nominee>()
+                .Property(e => e.nominee_relation)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_nominee>()
+                .Property(e => e.nominee_details)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_nominee>()
+                .Property(e => e.nominee_image)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_nominee_type>()
+                .Property(e => e.nominee_type_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sales_nominee_type>()
+                .HasMany(e => e.sales_nominee)
+                .WithOptional(e => e.sales_nominee_type)
+                .HasForeignKey(e => e.nominee_position_id);
 
             modelBuilder.Entity<survey_agenda>()
                 .HasMany(e => e.survey_master)
@@ -100,6 +286,16 @@ namespace StairEstate.Data
             modelBuilder.Entity<sys_branch>()
                 .Property(e => e.branch_tin)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<sys_branch>()
+                .HasMany(e => e.hr_employee)
+                .WithOptional(e => e.sys_branch)
+                .HasForeignKey(e => e.emp_branch_id);
+
+            modelBuilder.Entity<sys_branch>()
+                .HasMany(e => e.sales_collector)
+                .WithOptional(e => e.sys_branch)
+                .HasForeignKey(e => e.collector_branch_id);
 
             modelBuilder.Entity<sys_branch>()
                 .HasMany(e => e.survey_master)

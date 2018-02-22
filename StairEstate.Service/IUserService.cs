@@ -1,4 +1,5 @@
-﻿using StairEstate.Entity;
+﻿using System.Collections.Generic;
+using StairEstate.Entity;
 using StairEstate.Service.Generics;
 
 namespace StairEstate.Service
@@ -8,5 +9,7 @@ namespace StairEstate.Service
         sys_user ValidateUser(sys_user user);
 
         bool AuthorizedUser(string url);
+
+        IEnumerable<sys_user> GetAll();
     }
 }

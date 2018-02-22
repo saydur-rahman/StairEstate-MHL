@@ -21,5 +21,7 @@ namespace StairEstate.Entity
 
         [StringLength(50)]
         public string menu_parent { get; set; }
+
+        public int? menu_presidence { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -51,9 +52,18 @@ namespace StairEstate.Repo.Generics
 
         public void Update(TEntity entity)
         {
-            Context.Set<TEntity>().Attach(entity);
-            Context.Entry(entity).State = EntityState.Modified;
-            Context.SaveChanges();
+            
+            try
+            {
+                Context.Set<TEntity>().Attach(entity);
+                Context.Entry(entity).State = EntityState.Modified;
+                Context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Context.Set<TEntity>().AddOrUpdate(entity);
+                Context.SaveChanges();
+            }
         }
 
         public void Remove(int? id)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,10 +68,15 @@ namespace StairEstate.Repo
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
+        }
+
+        public IEnumerable<sys_user> GetAllWithBranchAndType()
+        {
+            return Context.sys_user.Include(s => s.sys_branch).Include(s => s.sys_user_type);
         }
     }
 }

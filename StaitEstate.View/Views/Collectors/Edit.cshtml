@@ -1,0 +1,206 @@
+﻿@model StairEstate.Entity.sales_collector
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+
+<div class="parentDiv panel mainbody panel-body">
+
+    <div class="head form-inline panel-heading" style="color: black">
+        <h4>Edit Collector</h4>
+    </div>
+
+    @using (Html.BeginForm("Edit", "Collectors", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.collector_id)
+        @Html.HiddenFor(model => model.collector_image)
+
+        <div class="form-horizontal">
+
+
+            <br />
+            <br />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Collector's Code</label>
+                <div class="col-md-4">
+                    <input type="text" name="collector_code" class="form-control" value="@Model.collector_code" id="col_code" readonly="" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Full Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mobile No.</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_phone, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Father or Husband's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_father_or_husband_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_father_or_husband_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mother's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_mother_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_mother_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Permanent Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_parmanent_address, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_parmanent_address, "", new { @class = "text-danger" })
+                </div>
+                <span class="checkbox col-md-4">
+                    <label><input type="button" id="perAdd" value="" class="btn btn-warning" onclick="addressSameClicked()">If Same</label>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Present Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_present_address, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_present_address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Date of Birth</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_dob, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_dob, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Birth Place</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.collector_birth_place, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.collector_birth_place, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Profession</label>
+                <div class="col-md-4">
+                    <datalist id="profession">
+                        @{
+                            foreach (var pro in ViewBag.Professions)
+                            {
+                                <option value="@pro.profession_name">
+                                    @pro.profession_name
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="profession" name="profession" class="form-control" required="" value="@Model.hr_profession.profession_name">
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Branch</label>
+                <div class="col-md-4">
+                    <datalist id="branchs">
+                        @{
+                            foreach (var branch in ViewBag.Branchs)
+                            {
+                                <option value="@branch.branch_name">
+                                    @branch.branch_name
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="branchs" name="branch" class="form-control" required="" value="@Model.sys_branch.branch_name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Sales Person</label>
+                <div class="col-md-4">
+                    <datalist id="sp">
+                        @{
+                            foreach (var sp in ViewBag.SP)
+                            {
+                                <option value="@sp.emp_code">
+                                    @sp.emp_code
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="sp" name="employee" class="form-control" required="" value="@Model.hr_employee.emp_code">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Image</label>
+                <div class="col-md-4">
+                    <img id="imgpreview" height="200" width="200" src="@Url.Content(Model.collector_image)" style="border-width: 1px; visibility: visible;" />
+                    <input type="file" name="imageFile" class="" onchange="showpreview(this);" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-primary btn-small" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Collectors", null, new { @class = "btn btn-sm btn-small btn-default return" })
+    </div>
+</div>
+
+
+<script>
+    function showpreview(input) {
+
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgpreview').css('visibility', 'visible');
+                $('#imgpreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+
+    //$(function () {
+    //    $("#datepicker").datepicker();
+    //});
+
+
+    function addressSameClicked() {
+        var a = $('#collector_parmanent_address').val();
+        var b = $('#collector_present_address');
+        b.val(a);
+        console.log(b);
+    }
+
+</script>

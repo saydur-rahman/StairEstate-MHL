@@ -22,7 +22,5 @@ namespace StairEstate.Service.Generics
         void Delete(int? id);
         void Delete(TEntity entity);
         void DeleteMany(IEnumerable<TEntity> entities);
-
-
     }
 }

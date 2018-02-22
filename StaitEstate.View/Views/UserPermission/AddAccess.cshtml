@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<div class="parentDiv panel mainbody panel-body">
+    @using (Html.BeginForm())
+    {
+        <input type="hidden" value="@ViewBag.UserTypeId" name="UserTypeId" />
+
+        
+        <div class="form-horizontal ">
+            <div class="head form-inline panel-heading" style="color: black">
+                <h3>Grant menu access</h3>
+            </div>
+
+            <br/>
+
+            <h4>System User Type: @ViewBag.UserType</h4>
+            <div class="form-group">
+                <label class="control-label col-md-2">Menu</label>
+                <div class="col-md-4">
+                    <select name="MenuId" autofocus="" class="form-control">
+                        @{
+                    foreach (var a in ViewBag.MenusList)
+                    {
+                        <option value=@a.Value> @a.Text </option>
+            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "UserPermission", null, new { @class = "btn btn-sm btn-small btn-default return" })
+    </div>
+
+</div>

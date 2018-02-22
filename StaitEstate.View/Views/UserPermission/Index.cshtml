@@ -1,0 +1,177 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<div class="parentDiv panel navbar navbar-fixed" ng-app="app" ng-controller="UsrTypeCtr">
+    <div class="head form-inline panel-heading">
+        <label style="color: black">User Type</label>
+        <div class="form-group m-b-10">
+            <select ng-model="selectedType" ng-change="changeList()" class="form-control">
+                <option value="-1">All</option>
+                <option ng-repeat="ut in types"
+                        value="{{ ut.Id }}"
+                        ng-selected="{{ ut.Selected == true }}">
+                    {{ ut.Name }}
+                </option>
+            </select>
+            
+
+            <label style="color: black">Menu</label>
+            @{
+                var url2 = Url.Action("AddAccess", "UserPermission", new {id = "{{ id = selectedType }}" });
+                url2 = HttpUtility.UrlDecode(url2);
+            }
+            <a data-ng-href="@url2" class="btn btn-sm btn-small btn-primary">Add Access</a>
+        </div>
+    </div>
+
+    <div class="mainbody panel-body" style="overflow: auto">
+        <table class="table table-hover table-bordered">
+            <thead class="bold">
+            <tr style="font-weight: bold">
+                <th>
+                    Name
+                </th>
+                <th>
+                    Link
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="menu in listMenu">
+                <td>
+                    {{menu.menu_name}}
+                </td>
+                <td>
+                    {{menu.menu_link}}
+                </td>
+                <td>
+                    @{
+                        var url = Url.Action("Delete", "UserPermission", new { mId = "{{ menu.menu_id }}", uId = "{{ selectedType }}" });
+                        url = HttpUtility.UrlDecode(url);
+                    }
+                    <a data-ng-href="@url" class="btn btn-danger btn-small btn-sm">Remove</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    var app = angular.module('app', ['ngBootbox']);
+    //app.service('UserAccessService', ['$http', function($http) {
+
+    //    var getAllUserTypes =new function() {
+    //        return $http.get("/System/UserPermission/GetAllUserTypes");
+    //    }
+
+
+    //}]);
+
+    //app.controller('UserAccessCtr', ['$scope', '$ngBootbox', 'UserAccessService', UserAccessCtr]);
+    //function UserAccessCtr(UserAccessService) {
+
+    //    var dt=UserAccessService.getAllUserTypes();
+    //    console.log(dt);
+    //}
+    app.controller('UsrTypeCtr', ['$scope', '$ngBootbox', 'TypeService', UsrTypeCtr]);
+    app.factory('TypeService', ['$http', function ($http) {
+
+        return {
+            //saveRoom: function (room) {
+            //    return $http({
+            //        url: '/Room/CreateRoom',
+            //        method: 'POST',
+            //        data: room
+            //    })
+            //},
+            //getRoom: function (id) {
+            //    return $http.get('/Room/GetRoom/' + id);
+            //},
+            //getAllRoom: function () {
+            //    return $http.get('/Room/GetRoomList');
+            //},
+
+            //getAllStore: function () {
+            //    return $http.get('/Store/GetStoreList');
+            //},
+
+
+            //deleteRoom: function (room) {
+            //    return $http({
+            //        url: '/Room/DeleteRoom',
+            //        method: 'POST',
+            //        data: room
+            //    })
+            //}
+            getAllType: function () {
+                return $http.get('/System/UserPermission/GetAllUserTypes');
+            },
+            getMenuForUser: function (id) {
+                return $http.get('/System/UserPermission/GetMenuForUser/' + id);
+            }
+        };
+    }]);
+    function UsrTypeCtr($scope, $ngBootbox, TypeService) {
+        //TypeService.getAllType().success(function (data) {
+        //    console.log(data);
+        //    //$scope.types = data;
+        //})
+        //    .error(function (xhr) {
+        //        $ngBootbox.alert('Failed');
+        //    });
+
+        TypeService.getAllType()
+            .then(function (response) {
+                console.log(response);
+                $scope.types = response.data;
+            });
+
+        $scope.changeList = function () {
+            TypeService.getMenuForUser($scope.selectedType)
+                .then(function (response) {
+                    $scope.listMenu = response.data;
+                    console.log(response.data);
+                });
+
+            console.log($scope.selectedType);
+        }
+        //For showing alert
+        //$ngBootbox.alert('asass');
+    }
+
+
+    //app.config(['$routeProvider', function ($routeProvider) {
+    //    $routeProvider.
+    //        when('/Create', {
+    //            templateUrl: 'Views/UserType/create.html',
+    //            controller: 'CreateController'
+    //        }).
+    //        when('/Edit', {
+    //            templateUrl: 'Views/UserType/edit.html',
+    //            controller: ''
+    //        }).
+    //        when('/Delete', {
+    //            templateUrl: 'Views/UserType/delete.html',
+    //            controller: ''
+    //        }).
+    //        when('/Index', {
+    //            templateUrl: 'Views/UserType/index.cshtml',
+    //            controller: ''
+    //        }).
+    //        otherwise({
+    //            redirecTo: '/Index'
+    //        })
+
+    //}]);
+</script>

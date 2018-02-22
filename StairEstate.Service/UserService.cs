@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StairEstate.Entity;
 using StairEstate.Repo;
+using StairEstate.Repo.Generics;
 using StairEstate.Repo.Interfaces;
 using StairEstate.Service.Generics;
 
@@ -14,10 +15,11 @@ namespace StairEstate.Service
     {
         private readonly IUserRepository _repository;
 
-        public UserService(IUserRepository repository)
+        public UserService(IUserRepository repository) : base(repository)
         {
             _repository = repository;
         }
+    
 
         public sys_user ValidateUser(sys_user user)
         {
@@ -27,6 +29,11 @@ namespace StairEstate.Service
         public bool AuthorizedUser(string url)
         {
             return _repository.CheckAuthorize(url);
+        }
+
+        public IEnumerable<sys_user> GetAll()
+        {
+            return _repository.GetAllWithBranchAndType();
         }
     }
 

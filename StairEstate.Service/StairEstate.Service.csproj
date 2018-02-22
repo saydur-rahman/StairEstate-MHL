@@ -43,12 +43,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BranchService.cs" />
+    <Compile Include="CollectorService.cs" />
+    <Compile Include="CountryService.cs" />
+    <Compile Include="CustomerService.cs" />
+    <Compile Include="EmployeeService.cs" />
+    <Compile Include="EmployeeTypeService.cs" />
     <Compile Include="Generics\IService.cs" />
     <Compile Include="Generics\Service.cs" />
+    <Compile Include="IBranchService.cs" />
+    <Compile Include="ICollectorService.cs" />
+    <Compile Include="ICountryService.cs" />
+    <Compile Include="ICustomerService.cs" />
+    <Compile Include="IEmployeeService.cs" />
+    <Compile Include="IEmployeeTypeService.cs" />
     <Compile Include="IMenuService.cs" />
+    <Compile Include="IProfessionService.cs" />
+    <Compile Include="IUserMenuAccessService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="IUserTypeService.cs" />
     <Compile Include="MenuService.cs" />
+    <Compile Include="ProfessionService.cs" />
+    <Compile Include="UserMenuAccessService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
