@@ -110,3 +110,17 @@ C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.csproj.CoreCompileInputs.cache
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.dll
 C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\StairEstate.Data.dll.config
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\StairEstate.Data.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\StairEstate.Data.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\EntityFramework.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\StairEstate.Entity.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\StairEstate.Entity.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\StairEstate.Entity.dll.config
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\EntityFramework.xml
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.csprojResolveAssemblyReference.cache
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.csproj.CoreCompileInputs.cache
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Data\obj\Debug\StairEstate.Data.pdb

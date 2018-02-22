@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16,6 +14,7 @@ namespace StaitEstate.View.Controllers.Sales
     [RoutePrefix("sales/customers")]
     public class CustomersController : Controller
     {
+        
         private readonly ICustomerService _customerService;
         private readonly IEmployeeService _employeeService;
         private readonly IBranchService _branchService;
@@ -157,9 +156,15 @@ namespace StaitEstate.View.Controllers.Sales
                 }
 
                 string fileName = model.customer_code + extension;
-
+                
                 model.customer_image = "~/File/Customer/" + fileName;
                 fileName = Path.Combine(Server.MapPath("~/File/Customer/"), fileName);
+
+                FileInfo fi = new FileInfo(fileName);
+                if (fi.Exists)
+                {
+                    fi.Delete();
+                }
                 imageFile.SaveAs(fileName);
 
                 _customerService.Create(model);
