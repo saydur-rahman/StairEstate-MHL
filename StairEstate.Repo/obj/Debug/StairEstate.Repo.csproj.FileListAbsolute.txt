@@ -15,3 +15,139 @@ C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Repo\obj\Debug
 C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
 C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
 C:\Users\Khon. Hashibul\source\repos\StaitEstate.View\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Source\Repos\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\peeya\Documents\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\peeya\Desktop\New folder\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\StairEstate - Copy\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\Users\Khon. Hashibul\Desktop\Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll.config
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Repo.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Data.dll.config
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.pdb
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\StairEstate.Entity.dll.config
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.xml
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\bin\Debug\EntityFramework.SqlServer.xml
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csprojResolveAssemblyReference.cache
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.csproj.CoreCompileInputs.cache
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.dll
+C:\work\Git Repo\StairEstate-MHL\StairEstate.Repo\obj\Debug\StairEstate.Repo.pdb

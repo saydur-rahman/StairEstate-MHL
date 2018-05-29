@@ -1,10 +1,12 @@
-using System;
 using StairEstate.Data;
 using StairEstate.Entity;
-using StairEstate.Repo.Interfaces;
 using StairEstate.Repo;
 using StairEstate.Repo.Generics;
+using StairEstate.Repo.Interfaces;
 using StairEstate.Service;
+using System;
+using System.Web.Http;
+using System.Web.Mvc;
 using Unity;
 
 namespace StaitEstate.View
@@ -47,6 +49,9 @@ namespace StaitEstate.View
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+            //DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
+
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
 
 
             //DbContext
@@ -68,6 +73,43 @@ namespace StaitEstate.View
             container.RegisterType<IUserTypeRepository, UserTypeRepository>();
             container.RegisterType<IRepository<sys_user_type>, Repository<sys_user_type>>();
 
+
+            //For Menu Access
+            container.RegisterType<IUserMenuAccessService, UserMenuAccessService>();
+            container.RegisterType<IRepository<sys_user_menu_access>, Repository<sys_user_menu_access>>();
+            container.RegisterType<IUserMenuPermissionRepository, UserMenuPermissionRepository>();
+
+            //For Branch
+            container.RegisterType<IBranchService, BranchService>();
+            container.RegisterType<IRepository<sys_branch>, Repository<sys_branch>>();
+
+            //For Country
+            container.RegisterType<ICountryService, CountryService>();
+            container.RegisterType<IRepository<sys_country>, Repository<sys_country>>();
+
+            //For Employee
+            container.RegisterType<IEmployeeService, EmployeeService>();
+            container.RegisterType<IRepository<hr_employee>, Repository<hr_employee>>();
+            container.RegisterType<IEmployeeRepositoy, EmployeeRepository>();
+
+            //For EmployeeType 
+            container.RegisterType<IEmployeeTypeService, EmployeeTypeService>();
+            container.RegisterType<IRepository<hr_employee_type>, Repository<hr_employee_type>>();
+
+
+            //For Collector
+            container.RegisterType<ICollectorService, CollectorService>();
+            container.RegisterType<IRepository<sales_collector>, Repository<sales_collector>>();
+
+
+
+            //For Profession
+            container.RegisterType<IProfessionService, ProfessionService>();
+            container.RegisterType<IRepository<hr_profession>, Repository<hr_profession>>();
+
+            //For Customer
+            container.RegisterType<ICustomerService, CustomerService>();
+            container.RegisterType<IRepository<sales_customer>, Repository<sales_customer>>();
         }
     }
 }

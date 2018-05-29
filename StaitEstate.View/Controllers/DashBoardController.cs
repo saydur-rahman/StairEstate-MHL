@@ -25,7 +25,7 @@ namespace StaitEstate.View.Controllers
                 RedirectToAction("Login", "Home");
             }
 
-            var menus = _menuService.GetSysMenus();
+            var menus = _menuService.GetSysMenus().OrderBy(m => m.menu_presidence);
             if (menus != null)
                 ViewBag.Menus = menus;
             else

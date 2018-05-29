@@ -1,0 +1,177 @@
+﻿@model IEnumerable<StairEstate.Entity.hr_employee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+<div class="parentDiv panel navbar navbar-fixed" ng-app="app" ng-controller="EmpCtr">
+    <div class="head form-inline panel-heading">
+        <label style="color: black">Country</label>
+        <div class="form-group m-b--10">
+            <select ng-model="selectedCountry" ng-change="changeBranch()" class="form-control">
+                <option value="-1">All</option>
+                <option ng-repeat="country in countries"
+                        value="{{ country.Id }}"
+                        ng-selected="{{ country.Selected == true }}">
+                    {{ country.Name }}
+                </option>
+
+            </select>
+        </div>
+
+
+
+        <label style="color: black">Branch</label>
+        <div class="form-group m-b--10">
+            <select ng-model="selectedBranch" ng-change="changeList()" class="form-control">
+                <option value="-1">All</option>
+                <option ng-repeat="branch in branches"
+                        value="{{ branch.Id }}"
+                        ng-selected="{{ branch.Selected == true }}">
+                    {{ branch.Name }}
+                </option>
+
+            </select>
+        </div>
+        @{
+            var urlAdd = Url.Action("Create", "Employees", new { branchId = "{{ selectedBranch }}" });
+            urlAdd = HttpUtility.UrlDecode(urlAdd);
+        }
+        <a data-ng-href="@urlAdd" class="btn btn-sm btn-small btn-primary">Add New Employee</a>
+
+    </div>
+    <div class="mainbody panel-body" style="overflow: auto">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Employee Code
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Mobile no.
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Date of Birth
+                    </th>
+                    <th>
+                        Employee type
+                    </th>
+                    <th>
+                        Branch
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in emps">
+                    <td>{{emp.Code}}</td>
+                    <td>{{emp.Name}}</td>
+                    <td>{{emp.Phone}}</td>
+                    <td>{{emp.Email}}</td>
+                    <td>{{emp.Dob}}</td>
+                    <td>{{emp.EmployeeType.Name}}</td>
+                    <td>{{emp.Branch.Name}}</td>
+                    <td>
+
+                        @{
+                            var urlEdit = Url.Action("Edit", "Employees", new { id = "{{ emp.Id }}" });
+                            urlEdit = HttpUtility.UrlDecode(urlEdit);
+
+                            var urlDetails = Url.Action("Details", "Employees", new { id = "{{ emp.Id }}" });
+                            urlDetails = HttpUtility.UrlDecode(urlDetails);
+                        }
+                        <a data-ng-href="@urlEdit" class="btn btn-primary btn-small btn-sm">Edit</a> |
+                        <a data-ng-href="@urlDetails" class="btn btn-warning btn-small btn-sm">Details</a> |
+                        <button class="btn btn-danger btn-small btn-sm"
+                                ng-click="deleteEmp(emp)">
+                            Delete
+                        </button>
+
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    var app = angular.module('app', ['ngBootbox']);
+    app.controller('EmpCtr', ['$scope', '$ngBootbox', 'EmpService', EmpCtr]);
+    app.factory('EmpService', ['$http', function ($http) {
+
+        return {
+            //getAllType: function () {
+            //    return $http.get('/System/UserPermission/GetAllUserTypes');
+            //},
+            //getMenuForUser: function (id) {
+            //    return $http.get('/System/UserPermission/GetMenuForUser/' + id);
+            //}
+            getCountry: function () {
+                return $http.get('/System/Users/GetCountry');
+            },
+
+            getBranch: function (id) {
+                return $http.get('/System/Users/GetBranch/' + id);
+            },
+            getEmps: function (branchId) {
+                return $http.get('/employees/getemp/' + branchId);
+            },
+
+            deleteEmp: function(id) {
+                return $http.get('/employees/deleteEmp/' + id);
+            }
+
+        };
+    }]);
+
+    function EmpCtr($scope, $ngBootbox, EmpService) {
+
+
+        EmpService.getCountry().
+            then(function (res) {
+                $scope.countries = res.data;
+            });
+
+        EmpService.getEmps().
+            then(function (res) {
+                $scope.emps = res.data;
+            });
+
+        $scope.changeBranch = function () {
+            EmpService.getBranch($scope.selectedCountry).
+                then(function (res) {
+                    $scope.branches = res.data;
+                });
+        }
+
+        $scope.changeList = function () {
+            $scope.emps = null;
+            EmpService.getEmps($scope.selectedBranch).
+                then(function (res) {
+                    $scope.emps = res.data;
+                });
+        }
+
+        $scope.deleteEmp = function(emp) {
+            $ngBootbox.confirm('Delete Employee: ' +  emp.Code)
+                .then(function () {
+                    EmpService.deleteEmp(emp.Id)
+                        .then(function (res) {
+                            if(res.data === 'Done')
+                                $scope.emps.splice($scope.emps.indexOf(emp), 1);
+                            else
+                                $ngBootbox.alert("Some thing went wrong");
+                        });
+                });
+        }
+    }
+</script>

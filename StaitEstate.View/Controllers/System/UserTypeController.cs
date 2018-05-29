@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using StairEstate.Data;
 using StairEstate.Entity;
 using StairEstate.Service;
+using Newtonsoft.Json;
 
 namespace StaitEstate.View.Controllers.System
 {
@@ -17,7 +12,7 @@ namespace StaitEstate.View.Controllers.System
      * Route has to configured
      * System/Usertype
      */
-    [RoutePrefix("Dashboard/System/UserTypes")]
+    [RoutePrefix("System/UserTypes")]
     public class UserTypeController : Controller
     {
 
@@ -32,19 +27,37 @@ namespace StaitEstate.View.Controllers.System
             _userService = userService;
         }
 
+
+        [Route("GetAllTypes")]
+        public JsonResult GetAllTypes()
+        {
+            //return (Json(new { a = "sas" },JsonRequestBehavior.AllowGet));
+            
+            return Json(_userTypeService.GetAll(), JsonRequestBehavior.AllowGet);
+
+            //try
+            //{
+            //    var a = Json(_userTypeService.GetAll(),JsonRequestBehavior.AllowGet);
+            //    return a;
+            //}
+            //catch(Exception ex)
+            //{
+            //    return (Json(new { a="sas" }));
+            //}
+        }
         // GET: sys_user_type
         [Route("Index")]
         public ActionResult Index()
         {
-            if (!_userService.AuthorizedUser("system/usertypes/index"))
-            {
-                return Content(unAuthorized);
-            }
+            ViewBag.Count = 0;
+            //if (!_userService.AuthorizedUser("system/usertypes/index"))
+            //{
+            //    return Content(unAuthorized);
+            //}
             return View(_userTypeService.GetAll());
         }
 
         // GET: sys_user_type/Details/5
-        [Route("Details")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -61,7 +74,6 @@ namespace StaitEstate.View.Controllers.System
         }
 
         // GET: sys_user_type/Create
-        [Route("Create")]
         public ActionResult Create()
         {
             return View();
@@ -71,7 +83,6 @@ namespace StaitEstate.View.Controllers.System
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "usr_type_Id,type_name,description")] sys_user_type sys_user_type)
         {
             if (ModelState.IsValid)
@@ -84,7 +95,8 @@ namespace StaitEstate.View.Controllers.System
         }
 
         // GET: sys_user_type/Edit/5
-        [Route("Edit/{id}")]
+
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,7 +115,6 @@ namespace StaitEstate.View.Controllers.System
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "usr_type_Id,type_name,description")] sys_user_type sys_user_type)
         {
             if (ModelState.IsValid)
@@ -115,7 +126,6 @@ namespace StaitEstate.View.Controllers.System
         }
 
         // GET: sys_user_type/Delete/5
-        [Route("Delete/{id}")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -132,7 +142,6 @@ namespace StaitEstate.View.Controllers.System
 
         // POST: sys_user_type/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             _userTypeService.Delete(id);

@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
 
-<html @*ng-app="app"*@>
+<html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>_InnerLayout</title>
+    <title>StairEstate</title>
     @*<script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
         <script src="../../Scripts/jquery-ui-1.8.21.custom.min.js" type="text/javascript"></script>
         <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
@@ -88,9 +88,10 @@
 
     @Styles.Render("~/Content/InnerLayout")
     @Scripts.Render("~/bundles/InnerLayout")
+
 </head>
-<body>
-    <div> 
+<body class="parentDiv panel mainbody panel-body">
+    <div style="display: table-cell;">
         @RenderBody()
     </div>
 </body>

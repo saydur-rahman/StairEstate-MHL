@@ -1,0 +1,209 @@
+﻿@model StairEstate.Entity.sales_customer
+
+@{
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+
+<div class="parentDiv panel mainbody panel-body">
+    <div class="head form-inline panel-heading" style="color: black">
+        <h4>Create a new Customer</h4>
+    </div>
+
+    @using (Html.BeginForm("Create", "Customers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <br />
+            <br />
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-2">Customer's Code</label>
+                <div class="col-md-4">
+                    <input type="text" id="customer_code" name="customer_code" class="form-control" value="" readonly="" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Full Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control", @required="" } })
+                    @Html.ValidationMessageFor(model => model.customer_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mobile No.</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_phone, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.customer_phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Father or Husband's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_father_or_husband_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.customer_father_or_husband_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mother's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_mother_name, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.customer_mother_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Permanent Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_permanent_address, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.customer_permanent_address, "", new { @class = "text-danger" })
+                </div>
+                <span class="checkbox col-md-4">
+                    <label><input type="button" id="perAdd" value="" class="btn btn-warning" onclick="addressSameClicked()">If Same</label>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Present Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_present_address, new { htmlAttributes = new { @class = "form-control", @required = "" } })
+                    @Html.ValidationMessageFor(model => model.customer_present_address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Date of Birth</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_dob, new { htmlAttributes = new { @class = "form-control" }, @required = "" })
+                    @Html.ValidationMessageFor(model => model.customer_dob, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Birth Place</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.customer_birth_place, new { htmlAttributes = new { @class = "form-control" }, @required = "" })
+                    @Html.ValidationMessageFor(model => model.customer_birth_place, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Collector</label>
+                <div class="col-md-4">
+                    <datalist id="col">
+                        @{
+                            foreach (var col in ViewBag.Cols)
+                            {
+                                <option value="@col.collector_code">
+                                    @col.collector_code
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="col" name="collector" class="form-control" required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Sales Person</label>
+                <div class="col-md-4">
+                    <datalist id="sp">
+                        @{
+                            foreach (var sp in ViewBag.SP)
+                            {
+                                <option value="@sp.emp_code">
+                                    @sp.emp_code
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="sp" name="employee" class="form-control" required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Profession</label>
+                <div class="col-md-4">
+                    <datalist id="profession">
+                        @{
+                            foreach (var pro in ViewBag.Professions)
+                            {
+                                <option value="@pro.profession_name">
+                                    @pro.profession_name
+                                </option>
+                            }
+                        }
+                    </datalist>
+                    <input list="profession" name="profession" class="form-control" required="">
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Image</label>
+                <div class="col-md-4">
+                    <img id="imgpreview" height="200" width="200" src="" style="border-width: 1px; visibility: hidden;" />
+                    <input type="file" name="imageFile" class="" onchange="showpreview(this);" />
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-sm btn-small btn-default return" })
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    function showpreview(input) {
+
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgpreview').css('visibility', 'visible');
+                $('#imgpreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+
+    $(function () {
+        $("#customer_dob").datepicker();
+    });
+
+
+
+    $.get("/customers/GetCusCode", function (data, status) {
+        $('#customer_code').removeAttr('readonly').val(data);
+        $('#customer_code').attr('readonly', "");
+    });
+
+    function addressSameClicked() {
+        var a = $('#customer_permanent_address').val();
+        var b = $('#customer_present_address');
+        b.val(a);
+    }
+
+</script>

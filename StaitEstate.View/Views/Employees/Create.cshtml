@@ -1,0 +1,171 @@
+﻿@model StairEstate.Entity.hr_employee
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+
+<div class="parentDiv panel mainbody panel-body">
+    <div class="head form-inline panel-heading" style="color: black">
+        <h4>Create a new Sales Person</h4>
+    </div>
+
+    @using (Html.BeginForm("create", "Employees", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <br />
+            <br />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Sales Person's Code</label>
+                <div class="col-md-4">
+                    <input type="text" name="emp_code" class="form-control" value="" id="emp_code" readonly="" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Full Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emp_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mobile No.</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emp_phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Email.</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emp_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Father or Husband's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_father_or_husband_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emp_father_or_husband_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Mother's Name</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_mother_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emp_mother_name, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Permanent Address</label>
+                <div class="col-md-4">
+
+                    @Html.EditorFor(model => model.emp_permanent_address, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+                <span class="checkbox col-md-4">
+                    <label><input type="button" id="perAdd" value="" class="btn btn-warning" onclick="addressSameClicked()">If Same</label>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Present Address</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_present_address, new { htmlAttributes = new { @class = "form-control datepicker", @id= "preAdd" } })
+                    @Html.ValidationMessageFor(model => model.emp_present_address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Date of Birth</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_dob, new { htmlAttributes = new { @class = "form-control date", @id = "datepicker" } })
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Birth Place</label>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.emp_birth_place, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.emp_birth_place, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Employee Type</label>
+                <div class="col-md-4">
+                    @Html.DropDownList("emp_type_id", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.emp_type_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Image</label>
+                <div class="col-md-4">
+                    <img id="imgpreview" height="200" width="200" src="" style="border-width: 1px; visibility: hidden;" />
+                    <input type="file" name="imageFile" class="" onchange="showpreview(this);" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", "Employees", null, new { @class = "btn btn-sm btn-small btn-default return" })
+    </div>
+</div>
+
+
+<script>
+    function showpreview(input) {
+
+        if (input.files && input.files[0]) {
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgpreview').css('visibility', 'visible');
+                $('#imgpreview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+
+    //$(function () {
+    //    $("#datepicker").datepicker();
+    //});
+
+
+
+    $.get("/employees/getempcode", function (data, status) {
+        $('#emp_code').removeAttr('readonly').val(data);
+        $('#emp_code').attr('readonly', "");
+    });
+
+    function addressSameClicked() {
+        var a = $('#emp_permanent_address').val();
+        var b = $('#preAdd');
+        b.val(a);
+        console.log(b);
+    }
+    
+</script>
